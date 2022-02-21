@@ -1,6 +1,5 @@
 package com.github.mattnicee7.util;
 
-import com.sun.istack.internal.Nullable;
 import lombok.val;
 
 import java.security.SecureRandom;
@@ -32,7 +31,6 @@ public class RandomUtil {
      *          </ul>
      * @return a random element from the list
      */
-    @Nullable
     public static <T> T getRandomElement(List<T> elements) {
         if (elements == null || elements.size() < 1)
             throw new IllegalArgumentException("List can't be null or empty");
@@ -53,7 +51,6 @@ public class RandomUtil {
      *
      * @return a random element from the array
      */
-    @Nullable
     public static <T> T getRandomElement(T[] elements) {
         return elements[RANDOM.nextInt(elements.length)];
     }
@@ -71,7 +68,6 @@ public class RandomUtil {
      *
      * @return a random string with the size informed
      */
-    @Nullable
     public static String generateRandomString(int length) {
         if (length <= 0)
             throw new IllegalArgumentException("");
@@ -99,7 +95,6 @@ public class RandomUtil {
      *
      * @return the random string
      */
-    @Nullable
     public static String generateRandomString(int length, boolean specialChars) {
         if (length <= 0)
             throw new IllegalArgumentException("");

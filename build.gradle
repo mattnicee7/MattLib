@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version '1.0.1'
 
 repositories {
     mavenCentral()
@@ -12,6 +13,9 @@ repositories {
 dependencies {
     compileOnly("org.projectlombok:lombok:1.18.20")
     annotationProcessor("org.projectlombok:lombok:1.18.20")
+
+    implementation("org.jetbrains:annotations:22.0.0")
+    implementation("com.google.guava:guava:31.0.1-jre")
 }
 
 test {

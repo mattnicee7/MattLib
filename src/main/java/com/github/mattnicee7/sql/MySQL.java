@@ -1,4 +1,4 @@
-package sql.com.github.mattnicee7;
+package com.github.mattnicee7.sql;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,7 +13,13 @@ public class MySQL implements DataSource{
     public MySQL(@NotNull DatabaseCredentials databaseCredentials) throws DatabaseConnectionException, DriverNotFoundException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection(databaseCredentials.getUrl(), databaseCredentials.getUsername(), databaseCredentials.getPassword());
+
+            this.connection = DriverManager.getConnection(
+                    databaseCredentials.getUrl(),
+                    databaseCredentials.getUsername(),
+                    databaseCredentials.getPassword()
+            );
+            
         } catch (SQLException exception) {
             throw new DatabaseConnectionException("Failed to connect with MySQL");
         } catch (ClassNotFoundException exception) {

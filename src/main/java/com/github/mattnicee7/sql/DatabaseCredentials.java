@@ -1,4 +1,4 @@
-package sql.com.github.mattnicee7;
+package com.github.mattnicee7.sql;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

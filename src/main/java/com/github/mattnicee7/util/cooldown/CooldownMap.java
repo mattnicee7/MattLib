@@ -1,4 +1,4 @@
-package util.com.github.mattnicee7.cooldown;
+package com.github.mattnicee7.util.cooldown;
 
 import com.google.common.collect.Maps;
 import lombok.val;

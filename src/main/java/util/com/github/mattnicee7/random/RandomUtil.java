@@ -1,4 +1,4 @@
-package com.github.mattnicee7.random;
+package util.com.github.mattnicee7.random;
 
 import lombok.val;
 import org.jetbrains.annotations.NotNull;

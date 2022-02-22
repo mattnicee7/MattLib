@@ -15,7 +15,6 @@ dependencies {
     annotationProcessor('org.projectlombok:lombok:1.18.22')
 
     implementation("org.jetbrains:annotations:22.0.0")
-    implementation("com.google.guava:guava:31.0.1-jre")
 
     implementation('org.xerial:sqlite-jdbc:3.36.0.2')
     implementation('mysql:mysql-connector-java:8.0.25')

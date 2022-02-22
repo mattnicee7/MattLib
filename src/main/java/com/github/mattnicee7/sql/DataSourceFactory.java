@@ -18,7 +18,7 @@ public class DataSourceFactory {
      *             DataSource dataSource = DataSourceFactory.createSQLiteDataSource(new File(path));
      *
      *             // Do something with dataSource (...)
-     *         } catch (DriverNotFoundException) {
+     *         } catch (DriverNotFoundException exception) {
      *             exception.printStackTrace();
      *         }
      *     }

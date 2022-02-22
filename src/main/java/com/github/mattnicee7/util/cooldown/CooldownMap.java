@@ -1,13 +1,34 @@
 package com.github.mattnicee7.util.cooldown;
 
-import com.google.common.collect.Maps;
 import lombok.val;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class CooldownMap<T> {
 
-    private final Map<T, Long> inCooldown = Maps.newHashMap();
+    private final Map<T, Long> inCooldown = new HashMap<>();
+
+    /**
+     * Get a CooldownMap from a class.
+     *
+     * <h2> Example Usage
+     * <pre>
+     *     {@code
+     *     public static void main(String[] args) {
+     *         val cooldownMap = CooldownMap.of(String.class);
+     *
+     *         cooldownMap.add("Matt", 10000L);
+     *     }}</pre>
+     *
+     * @param clazz
+     *        The generic type class you want in the cooldown map.
+     *
+     * @return A cooldown map with the given generic class type.
+     */
+    public static <T> CooldownMap<T> of(Class<T> clazz) {
+        return new CooldownMap<T>();
+    }
 
     /**
      * Add the object in the cooldown.

@@ -59,7 +59,7 @@ public class DataSourceFactory {
      *     public static void main(String[] args) {
      *         try {
      *             DataSource dataSource = DataSourceFactory.createMySQLDataSource(
-     *                      DatabaseCredentials.of(address, port, database, username, password)
+     *                      MySQLCredentials.of(address, port, database, username, password)
      *             );
      *
      *             // Do something with the dataSource (...)

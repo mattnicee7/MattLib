@@ -1,8 +1,11 @@
-package com.github.mattnicee7.sql;
+package com.github.mattnicee7.sql.datasource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ *
+ */
 public interface DataSource {
 
     /**

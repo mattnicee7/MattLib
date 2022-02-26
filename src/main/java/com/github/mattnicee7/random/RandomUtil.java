@@ -1,18 +1,34 @@
-package com.github.mattnicee7.util.random;
+package com.github.mattnicee7.random;
 
 import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
-import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 
+/**
+ *
+ */
 public class RandomUtil {
 
-    private static final SecureRandom RANDOM = new SecureRandom();
+    /**
+     *
+     */
+    private static final Random RANDOM = new Random();
 
+    /**
+     *
+     */
     private static final char[] ALPHANUMERIC_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+    /**
+     *
+     */
     private static final char[] ALPHANUMERIC_SPECIAL_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*()_+=-,.;/".toCharArray();
 
+    /**
+     * Not instantiable
+     */
     private RandomUtil() {
         throw new UnsupportedOperationException("This class is not instantiable");
     }
@@ -55,6 +71,20 @@ public class RandomUtil {
             throw new IllegalArgumentException("Array can't be empty");
 
         return elements[RANDOM.nextInt(elements.length)];
+    }
+
+    /**
+     *
+     */
+    public static boolean checkPercentage(double percentage) {
+        return RANDOM.nextDouble() * 100 <= percentage;
+    }
+
+    /**
+     *
+     */
+    public static int getRandomNumberBetween(int min, int max) {
+        return 0;
     }
 
     /**

@@ -1,9 +1,17 @@
-package com.github.mattnicee7.sql;
+package com.github.mattnicee7.sql.datasource.factory;
 
+import com.github.mattnicee7.sql.credentials.impl.MySQLCredentials;
+import com.github.mattnicee7.sql.credentials.impl.SQLiteCredentials;
+import com.github.mattnicee7.sql.datasource.impl.MySQL;
+import com.github.mattnicee7.sql.datasource.impl.SQLite;
+import com.github.mattnicee7.sql.datasource.DataSource;
+import com.github.mattnicee7.sql.exception.DatabaseConnectionException;
+import com.github.mattnicee7.sql.exception.DriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-
+/**
+ *
+ */
 public class DataSourceFactory {
 
     /**
@@ -15,7 +23,9 @@ public class DataSourceFactory {
      * public class Application {
      *     public static void main(String[] args) {
      *         try {
-     *             DataSource dataSource = DataSourceFactory.createSQLiteDataSource(new File(path));
+     *             DataSource dataSource = DataSourceFactory.createSQLiteDataSource(
+     *                      SQLiteCredentials.of(new File(path))
+     *              );
      *
      *             // Do something with dataSource (...)
      *         } catch (DriverNotFoundException exception) {
@@ -25,8 +35,8 @@ public class DataSourceFactory {
      * }}</pre>
      *
      *
-     * @param file
-     *        File with extension .db to use on connection.
+     * @param sqLiteCredentials
+     *        Credentials of the SQLite Database
      *
      * @throws DriverNotFoundException
      *         <ul type="disc">
@@ -35,8 +45,8 @@ public class DataSourceFactory {
      *
      * @return A datasource with the SQLite connection.
      */
-    public static DataSource createSQLiteDataSource(@NotNull File file) throws DriverNotFoundException {
-        return new SQLite(file);
+    public static DataSource createSQLiteDataSource(@NotNull SQLiteCredentials sqLiteCredentials) throws DriverNotFoundException {
+        return new SQLite(sqLiteCredentials);
     }
 
     /**
@@ -61,7 +71,7 @@ public class DataSourceFactory {
      *     }
      * }}</pre>
      *
-     * @param databaseCredentials
+     * @param mySQLCredentials
      *        Credentials of the MySQL Database.
      *
      * @throws DatabaseConnectionException
@@ -77,8 +87,8 @@ public class DataSourceFactory {
      * @return A datasource with MySQL connection.
      *
      * */
-    public static DataSource createMySQLDataSource(@NotNull DatabaseCredentials databaseCredentials) throws DatabaseConnectionException, DriverNotFoundException {
-        return new MySQL(databaseCredentials);
+    public static DataSource createMySQLDataSource(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DriverNotFoundException {
+        return new MySQL(mySQLCredentials);
     }
 
 }

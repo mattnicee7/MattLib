@@ -1,12 +1,18 @@
-package com.github.mattnicee7.util.cooldown;
+package com.github.mattnicee7.cooldown;
 
 import lombok.val;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public class CooldownMap<T> {
 
+    /**
+     *
+     */
     private final Map<T, Long> inCooldown = new HashMap<>();
 
     /**
@@ -40,7 +46,7 @@ public class CooldownMap<T> {
      *        Cooldown time in millis. (Example: 10000L = 10 Seconds).
      *
      */
-    public void add(T key, Long time) {
+    public void put(T key, Long time) {
         inCooldown.put(key, System.currentTimeMillis() + time);
     }
 

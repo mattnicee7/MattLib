@@ -1,23 +1,33 @@
-package com.github.mattnicee7.sql;
+package com.github.mattnicee7.sql.datasource.impl;
 
+import com.github.mattnicee7.sql.credentials.impl.MySQLCredentials;
+import com.github.mattnicee7.sql.datasource.DataSource;
+import com.github.mattnicee7.sql.exception.DatabaseConnectionException;
+import com.github.mattnicee7.sql.exception.DriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MySQL implements DataSource{
+public class MySQL implements DataSource {
 
+    /**
+     *
+     */
     private final Connection connection;
 
-    public MySQL(@NotNull DatabaseCredentials databaseCredentials) throws DatabaseConnectionException, DriverNotFoundException {
+    /**
+     *
+     */
+    public MySQL(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DriverNotFoundException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
             this.connection = DriverManager.getConnection(
-                    databaseCredentials.getUrl(),
-                    databaseCredentials.getUsername(),
-                    databaseCredentials.getPassword()
+                    mySQLCredentials.getUrl(),
+                    mySQLCredentials.getUsername(),
+                    mySQLCredentials.getPassword()
             );
             
         } catch (SQLException exception) {
@@ -27,11 +37,17 @@ public class MySQL implements DataSource{
         }
     }
 
+    /**
+     *
+     */
     @Override
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     *
+     */
     @Override
     public void closeConnection() {
         try {

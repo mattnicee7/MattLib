@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
 /**
- *
+ * Class responsible for storing credentials of a SQLite database.
  */
 public class SQLiteCredentials extends DatabaseCredentials {
 

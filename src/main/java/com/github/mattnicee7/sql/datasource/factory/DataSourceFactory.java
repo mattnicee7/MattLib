@@ -10,7 +10,7 @@ import com.github.mattnicee7.sql.exception.DriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * Useful class to create database connections. You can create a connection with MySQL and SQLite.
  */
 public class DataSourceFactory {
 

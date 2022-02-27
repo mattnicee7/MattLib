@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ * Class responsible for storing the connection with SQLite.
  */
 public class SQLite implements DataSource {
 

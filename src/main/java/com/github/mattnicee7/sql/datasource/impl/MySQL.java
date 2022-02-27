@@ -10,11 +10,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Class responsible for storing the connection with MySQL. You can close the connection whenever you want.
+ */
 public class MySQL implements DataSource {
 
-    /**
-     *
-     */
     private final Connection connection;
 
     /**
@@ -37,17 +37,11 @@ public class MySQL implements DataSource {
         }
     }
 
-    /**
-     *
-     */
     @Override
     public Connection getConnection() {
         return connection;
     }
 
-    /**
-     *
-     */
     @Override
     public void closeConnection() {
         try {
@@ -56,4 +50,5 @@ public class MySQL implements DataSource {
             exception.printStackTrace();
         }
     }
+
 }

@@ -1,7 +1,7 @@
 package com.github.mattnicee7.time;
 
 /**
- *
+ * Utility class for time.
  */
 public class TimeUtils {
 

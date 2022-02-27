@@ -7,22 +7,22 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Utility class for random things.
  */
 public class RandomUtil {
 
     /**
-     *
+     * The random instance.
      */
     private static final Random RANDOM = new Random();
 
     /**
-     *
+     * Alphabet & Numeric characters pattern.
      */
     private static final char[] ALPHANUMERIC_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
-     *
+     * Alphabet, Numeric & Special characters pattern.
      */
     private static final char[] ALPHANUMERIC_SPECIAL_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*()_+=-,.;/".toCharArray();
 
@@ -77,6 +77,9 @@ public class RandomUtil {
      *
      */
     public static boolean checkPercentage(double percentage) {
+        if (percentage < 0.0)
+            throw new IllegalArgumentException("");
+
         return RANDOM.nextDouble() * 100 <= percentage;
     }
 
@@ -84,7 +87,12 @@ public class RandomUtil {
      *
      */
     public static int getRandomNumberBetween(int min, int max) {
-        return 0;
+        int randomNumber = RANDOM.nextInt(max);
+
+        while (randomNumber < min)
+            randomNumber = RANDOM.nextInt(max);
+
+        return randomNumber;
     }
 
     /**
@@ -117,6 +125,7 @@ public class RandomUtil {
      *
      * @param length
      *        Size of random string.
+     *
      * @param specialChars
      *        If you want to use the special characters in the random string.
      *

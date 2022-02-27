@@ -6,19 +6,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Make a cooldown collection with this class.
+ * Put your objects on cooldown whenever you want.
+ *
+ * <h2> Example Usage:
+ *
+ * <pre>
+ *     {@code
+ *     public static void main(String[] args) {
+ *         val cooldownMap = CooldownMap.of(User.class);
+ *
+ *         // Do what you want with the cooldown map (...)
+ *     }}</pre>
  *
  */
 public class CooldownMap<T> {
 
     /**
-     *
+     * Collection responsible for keeping objects on cooldown
      */
     private final Map<T, Long> inCooldown = new HashMap<>();
 
     /**
      * Get a CooldownMap from a class.
      *
-     * <h2> Example Usage
+     * <h2> Example Usage:
+     *
      * <pre>
      *     {@code
      *     public static void main(String[] args) {
@@ -103,6 +116,7 @@ public class CooldownMap<T> {
      *
      * @return A formatted string with remaining time cooldown.
      */
+    @Deprecated
     private String getRemainingTimeFormatted(T key) {
         val remainingTimeInMillis = getRemainingTime(key);
 

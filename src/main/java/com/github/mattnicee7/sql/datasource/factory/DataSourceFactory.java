@@ -25,8 +25,10 @@
 package com.github.mattnicee7.sql.datasource.factory;
 
 import com.github.mattnicee7.sql.credentials.impl.MySQLCredentials;
+import com.github.mattnicee7.sql.credentials.impl.PostgreSQLCredentials;
 import com.github.mattnicee7.sql.credentials.impl.SQLiteCredentials;
 import com.github.mattnicee7.sql.datasource.impl.MySQL;
+import com.github.mattnicee7.sql.datasource.impl.PostgreSQL;
 import com.github.mattnicee7.sql.datasource.impl.SQLite;
 import com.github.mattnicee7.sql.datasource.DataSource;
 import com.github.mattnicee7.sql.exception.DatabaseConnectionException;
@@ -113,6 +115,48 @@ public class DataSourceFactory {
      * */
     public static DataSource createMySQLDataSource(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DriverNotFoundException {
         return new MySQL(mySQLCredentials);
+    }
+
+    /**
+     * Create a DataSource with PostgreSQL Url.
+     *
+     * <h2> Example Usage
+     * <pre>
+     *     {@code
+     * public class Application {
+     *     public static void main(String[] args) {
+     *         try {
+     *             DataSource dataSource = DataSourceFactory.createMySQLDataSource(
+     *                      PostgreSQLCredentials.of(address, port, database, username, password)
+     *             );
+     *
+     *             // Do something with the dataSource (...)
+     *         } catch (DatabaseConnectionException exception) {
+     *             System.out.println("DatabaseConnection Error: " + exception.getMessage();
+     *         } catch (DriverNotFoundException exception) {
+     *             System.out.println("DriverNotFound Error: " + exception.getMessage();
+     *         }
+     *     }
+     * }}</pre>
+     *
+     * @param postgreSQLCredentials
+     *        Credentials of the PostgreSQL Database.
+     *
+     * @throws DatabaseConnectionException
+     *         <ul type="disc">
+     *             <li>If the credentials is wrong.</li>
+     *         </ul>
+     *
+     * @throws DriverNotFoundException
+     *         <ul type="disc">
+     *             <li>If the PostgreSQL driver was not found.</li>
+     *         </ul>
+     *
+     * @return A datasource with PostgreSQL connection.
+     *
+     * */
+    public static DataSource createPostgreSQLDataSource(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DriverNotFoundException, DatabaseConnectionException {
+        return new PostgreSQL(postgreSQLCredentials);
     }
 
 }

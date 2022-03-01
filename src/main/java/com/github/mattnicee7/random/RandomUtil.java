@@ -98,17 +98,33 @@ public class RandomUtil {
     }
 
     /**
+     * Checks if the percentage you entered is between the randomly generated percentage.
      *
+     * @param percentage
+     *        The percentage that you want to test.
+     *
+     * @throws IllegalArgumentException
+     *         If the percentage you entered is less than 0.
+     *
+     * @return If the random percentage is within the one you entered
      */
     public static boolean checkPercentage(double percentage) {
         if (percentage < 0.0)
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("The percentage must be greater than 0");
 
         return RANDOM.nextDouble() * 100 <= percentage;
     }
 
     /**
+     * Get a random number between two numbers
      *
+     * @param min
+     *        The minimum number
+     *
+     * @param max
+     *        The maximum number
+     *
+     * @return A random number among those informed.
      */
     public static int getRandomNumberBetween(int min, int max) {
         int randomNumber = RANDOM.nextInt(max);

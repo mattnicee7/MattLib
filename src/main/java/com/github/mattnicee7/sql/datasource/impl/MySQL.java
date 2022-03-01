@@ -41,9 +41,6 @@ public class MySQL implements DataSource {
 
     private final Connection connection;
 
-    /**
-     *
-     */
     public MySQL(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DriverNotFoundException {
         try {
             Class.forName("com.mysql.jdbc.Driver");

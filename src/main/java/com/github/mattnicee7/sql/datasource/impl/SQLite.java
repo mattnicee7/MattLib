@@ -40,9 +40,6 @@ public class SQLite implements DataSource {
 
     private final String url;
 
-    /**
-     *
-     */
     public SQLite(@NotNull SQLiteCredentials sqLiteCredentials) throws DriverNotFoundException {
         try {
             this.url = sqLiteCredentials.getUrl();

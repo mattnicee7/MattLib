@@ -8,17 +8,32 @@ version '1.0.1'
 
 repositories {
     mavenCentral()
+
+    flatDir {
+        dirs("libs")
+    }
 }
 
 dependencies {
+    // Lombok
     compileOnly('org.projectlombok:lombok:1.18.22')
     annotationProcessor('org.projectlombok:lombok:1.18.22')
 
+    // JetBrains Annotations
     implementation("org.jetbrains:annotations:22.0.0")
 
+    // SQLite Driver
     implementation('org.xerial:sqlite-jdbc:3.36.0.2')
+
+    // MySQL Driver
     implementation('mysql:mysql-connector-java:8.0.25')
+
+    // PostgreSQL Driver
     implementation('org.postgresql:postgresql:42.3.2')
+
+    // QR Code Generator
+    implementation('com.google.zxing:core:3.3.0')
+    implementation('com.google.zxing:javase:3.3.0')
 
 }
 

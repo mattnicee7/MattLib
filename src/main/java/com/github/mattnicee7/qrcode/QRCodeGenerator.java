@@ -84,6 +84,9 @@ public class QRCodeGenerator {
      * @param path
      *        File path to save the qr code image.
      *
+     * @param charset
+     *        The charset of the qr code text.
+     *
      * @param height
      *        Height of the QRCode image.
      *

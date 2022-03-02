@@ -32,7 +32,7 @@ import com.github.mattnicee7.sql.datasource.impl.PostgreSQL;
 import com.github.mattnicee7.sql.datasource.impl.SQLite;
 import com.github.mattnicee7.sql.datasource.DataSource;
 import com.github.mattnicee7.sql.exception.DatabaseConnectionException;
-import com.github.mattnicee7.sql.exception.DriverNotFoundException;
+import com.github.mattnicee7.sql.exception.DatabaseDriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -64,14 +64,14 @@ public class DataSourceFactory {
      * @param sqLiteCredentials
      *        Credentials of the SQLite Database
      *
-     * @throws DriverNotFoundException
+     * @throws DatabaseDriverNotFoundException
      *         <ul type="disc">
      *             <li>If the SQLite driver was not found.</li>
      *         </ul>
      *
      * @return A datasource with the SQLite connection.
      */
-    public static DataSource createSQLiteDataSource(@NotNull SQLiteCredentials sqLiteCredentials) throws DriverNotFoundException {
+    public static DataSource createSQLiteDataSource(@NotNull SQLiteCredentials sqLiteCredentials) throws DatabaseDriverNotFoundException {
         return new SQLite(sqLiteCredentials);
     }
 
@@ -105,7 +105,7 @@ public class DataSourceFactory {
      *             <li>If the credentials is wrong.</li>
      *         </ul>
      *
-     * @throws DriverNotFoundException
+     * @throws DatabaseDriverNotFoundException
      *         <ul type="disc">
      *             <li>If the MySQL driver was not found.</li>
      *         </ul>
@@ -113,7 +113,7 @@ public class DataSourceFactory {
      * @return A datasource with MySQL connection.
      *
      * */
-    public static DataSource createMySQLDataSource(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DriverNotFoundException {
+    public static DataSource createMySQLDataSource(@NotNull MySQLCredentials mySQLCredentials) throws DatabaseConnectionException, DatabaseDriverNotFoundException {
         return new MySQL(mySQLCredentials);
     }
 
@@ -147,7 +147,7 @@ public class DataSourceFactory {
      *             <li>If the credentials is wrong.</li>
      *         </ul>
      *
-     * @throws DriverNotFoundException
+     * @throws DatabaseDriverNotFoundException
      *         <ul type="disc">
      *             <li>If the PostgreSQL driver was not found.</li>
      *         </ul>
@@ -155,7 +155,7 @@ public class DataSourceFactory {
      * @return A datasource with PostgreSQL connection.
      *
      * */
-    public static DataSource createPostgreSQLDataSource(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DriverNotFoundException, DatabaseConnectionException {
+    public static DataSource createPostgreSQLDataSource(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DatabaseDriverNotFoundException, DatabaseConnectionException {
         return new PostgreSQL(postgreSQLCredentials);
     }
 

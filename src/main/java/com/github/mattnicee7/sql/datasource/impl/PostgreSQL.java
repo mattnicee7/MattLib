@@ -27,7 +27,7 @@ package com.github.mattnicee7.sql.datasource.impl;
 import com.github.mattnicee7.sql.credentials.impl.PostgreSQLCredentials;
 import com.github.mattnicee7.sql.datasource.DataSource;
 import com.github.mattnicee7.sql.exception.DatabaseConnectionException;
-import com.github.mattnicee7.sql.exception.DriverNotFoundException;
+import com.github.mattnicee7.sql.exception.DatabaseDriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
@@ -38,7 +38,7 @@ public class PostgreSQL implements DataSource {
 
     private final Connection connection;
 
-    public PostgreSQL(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DriverNotFoundException, DatabaseConnectionException {
+    public PostgreSQL(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DatabaseDriverNotFoundException, DatabaseConnectionException {
         try {
             Class.forName("org.postgresql.Driver");
 
@@ -49,7 +49,7 @@ public class PostgreSQL implements DataSource {
             );
 
         } catch (ClassNotFoundException exception) {
-            throw new DriverNotFoundException("PostgreSQL Driver not found");
+            throw new DatabaseDriverNotFoundException("PostgreSQL Driver not found");
         } catch (SQLException exception) {
             throw new DatabaseConnectionException("Failed to connect with PostgreSQL");
         }

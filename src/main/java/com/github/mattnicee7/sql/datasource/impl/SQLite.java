@@ -26,7 +26,7 @@ package com.github.mattnicee7.sql.datasource.impl;
 
 import com.github.mattnicee7.sql.credentials.impl.SQLiteCredentials;
 import com.github.mattnicee7.sql.datasource.DataSource;
-import com.github.mattnicee7.sql.exception.DriverNotFoundException;
+import com.github.mattnicee7.sql.exception.DatabaseDriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
@@ -40,13 +40,13 @@ public class SQLite implements DataSource {
 
     private final String url;
 
-    public SQLite(@NotNull SQLiteCredentials sqLiteCredentials) throws DriverNotFoundException {
+    public SQLite(@NotNull SQLiteCredentials sqLiteCredentials) throws DatabaseDriverNotFoundException {
         try {
             this.url = sqLiteCredentials.getUrl();
 
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException exception) {
-            throw new DriverNotFoundException("SQLite driver not found");
+            throw new DatabaseDriverNotFoundException("SQLite driver not found");
         }
 
     }

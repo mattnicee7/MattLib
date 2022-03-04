@@ -23,6 +23,10 @@ public class PreparedStatementBuilder {
         this.parameters = new HashMap<>();
     }
 
+    public static PreparedStatementBuilder of(@NotNull String query) {
+        return new PreparedStatementBuilder(query);
+    }
+
     /**
      * This function adds a parameter to the prepared statement
      *
@@ -41,7 +45,7 @@ public class PreparedStatementBuilder {
      * @param connection The connection to the database.
      * @return PreparedStatement
      */
-    public PreparedStatement build(Connection connection) throws SQLException {
+    public PreparedStatement build(@NotNull Connection connection) throws SQLException {
         val preparedStatement = connection.prepareStatement(this.query);
 
         for (Map.Entry<Integer, Object> entry : parameters.entrySet()) {

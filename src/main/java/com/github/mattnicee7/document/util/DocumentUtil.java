@@ -24,7 +24,14 @@
 
 package com.github.mattnicee7.document.util;
 
+import com.github.mattnicee7.document.DocumentChecker;
+import com.github.mattnicee7.document.impl.CNPJChecker;
+import com.github.mattnicee7.document.impl.CPFChecker;
+
 public class DocumentUtil {
+
+    private static final DocumentChecker<String> CPF_CHECKER = new CPFChecker();
+    private static final DocumentChecker<String> CNPJ_CHECKER = new CNPJChecker();
 
     /**
      * Not instantiable
@@ -33,12 +40,18 @@ public class DocumentUtil {
         throw new UnsupportedOperationException("This class is not instantiable");
     }
 
-    public static boolean isCPFValid() {
-        return false;
+    /**
+     * Format: xxx.xxx.xxx.xx
+     * */
+    public static boolean isCPFValid(String cpf) {
+        return CPF_CHECKER.check(cpf);
     }
 
-    public static boolean isCNPJValid() {
-        return false;
+    /*
+    * Format: xx.xxx.xxx/xxxx-xx
+    * */
+    public static boolean isCNPJValid(String cnpj) {
+        return CNPJ_CHECKER.check(cnpj);
     }
 
 }

@@ -52,13 +52,13 @@ public class TimeFormatterBuilder {
 
     public static TimeFormatter getDefaultTimeFormatter() {
         return new TimeFormatter(
-                TimeFormat.of(YEAR_IN_SECONDS, " ano", " anos"),
-                TimeFormat.of(MONTH_IN_SECONDS, " mês", " meses"),
-                TimeFormat.of(WEEK_IN_SECONDS, " semana", " semanas"),
-                TimeFormat.of(DAY_IN_SECONDS, " dia", " dias"),
-                TimeFormat.of(HOUR_IN_SECONDS, " hora", " horas"),
-                TimeFormat.of(MINUTE_IN_SECONDS, " minuto", " minutos"),
-                TimeFormat.of(SECOND_IN_SECONDS, " segundo", " segundos")
+                TimeFormat.of(YEAR_IN_SECONDS, " year", " years"),
+                TimeFormat.of(MONTH_IN_SECONDS, " month", " months"),
+                TimeFormat.of(WEEK_IN_SECONDS, " week", " weeks"),
+                TimeFormat.of(DAY_IN_SECONDS, " day", " days"),
+                TimeFormat.of(HOUR_IN_SECONDS, " hour", " hours"),
+                TimeFormat.of(MINUTE_IN_SECONDS, " minute", " minutes"),
+                TimeFormat.of(SECOND_IN_SECONDS, " second", " seconds")
         );
     }
 

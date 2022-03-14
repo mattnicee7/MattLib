@@ -24,6 +24,8 @@
 
 package com.github.mattnicee7.cooldown;
 
+import com.github.mattnicee7.time.TimeFormatter;
+import com.github.mattnicee7.time.TimeFormatterBuilder;
 import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
@@ -134,18 +136,24 @@ public class CooldownMap<T> {
     }
 
     /**
-     * Get formatted remaining cooldown time of the object.
+     * Get formatted remaining cooldown time of the object with default time formatter.
      *
      * @param key
      *        Object to get formatted remaining time in cooldown.
      *
-     * @return A formatted string with remaining time cooldown.
+     * @return A formatted string with remaining time cooldown and the default time formatter.
      */
-    @Deprecated
-    private String getRemainingTimeFormatted(@NotNull T key) {
-        val remainingTimeInMillis = getRemainingTime(key);
+    public String getRemainingTimeFormatted(@NotNull T key) {
+        return getRemainingTimeFormatted(key, TimeFormatterBuilder.getDefaultTimeFormatter());
+    }
 
-        return "";
+    public String getRemainingTimeFormatted(@NotNull T key, @NotNull TimeFormatter timeFormatter) {
+        if (!inCooldown.containsKey(key))
+            return "";
+
+        val millis = getRemainingTime(key);
+
+        return timeFormatter.format(millis);
     }
 
 }

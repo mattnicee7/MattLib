@@ -41,8 +41,17 @@ public class TimeFormat {
     private String singular;
     private String plural;
 
+    public TimeFormat(@NotNull String singular, @NotNull String plural) {
+        this.singular = singular;
+        this.plural = plural;
+    }
+
     public static TimeFormat of(long time, @NotNull String singular, @NotNull String plural) {
         return new TimeFormat(time, singular, plural);
+    }
+
+    public static TimeFormat of(@NotNull String singular, @NotNull String plural) {
+        return new TimeFormat(singular, plural);
     }
 
     public void setSingularAndPlural(Pair<String, String> singularAndPlural) {

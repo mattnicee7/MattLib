@@ -25,9 +25,8 @@
 package com.github.mattnicee7.time;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -35,8 +34,6 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter(AccessLevel.PACKAGE)
 public class TimeFormatter {
 
@@ -47,6 +44,25 @@ public class TimeFormatter {
     private TimeFormat hour = new TimeFormat();
     private TimeFormat minute = new TimeFormat();
     private TimeFormat second = new TimeFormat();
+
+    public TimeFormatter() {
+        applyTimeInTimeFormats();
+    }
+
+    public TimeFormatter(
+            @NotNull TimeFormat year, @NotNull TimeFormat month,
+            @NotNull TimeFormat week, @NotNull TimeFormat day,
+            @NotNull TimeFormat hour, @NotNull TimeFormat minute,
+            @NotNull TimeFormat second) {
+        this.year = year;
+        this.month = month;
+        this.week = week;
+        this.day = day;
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+        applyTimeInTimeFormats();
+    }
 
     /*
      Credits: https://github.com/ViiictorXD/ParkourBR/blob/development/src/main/java/com/rukko/parkour/backend/format/FormatTime.java.
@@ -103,6 +119,16 @@ public class TimeFormatter {
 
     public String format(Instant instant) {
         return format(instant.toEpochMilli());
+    }
+
+    private void applyTimeInTimeFormats() {
+        this.year.setTimeInSecond(31104000L);
+        this.month.setTimeInSecond(2592000L);
+        this.week.setTimeInSecond(604800L);
+        this.day.setTimeInSecond(86400L);
+        this.hour.setTimeInSecond(3600L);
+        this.minute.setTimeInSecond(60L);
+        this.second.setTimeInSecond(1L);
     }
 
 }

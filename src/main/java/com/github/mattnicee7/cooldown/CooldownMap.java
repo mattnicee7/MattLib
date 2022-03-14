@@ -25,6 +25,7 @@
 package com.github.mattnicee7.cooldown;
 
 import lombok.val;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class CooldownMap<T> {
      *
      * @return A cooldown map with the given generic class type.
      */
-    public static <T> CooldownMap<T> of(Class<T> clazz) {
+    public static <T> CooldownMap<T> of(@NotNull Class<T> clazz) {
         return new CooldownMap<T>();
     }
 
@@ -83,7 +84,7 @@ public class CooldownMap<T> {
      *        Cooldown time in millis. (Example: 10000L = 10 Seconds).
      *
      */
-    public void put(T key, Long time) {
+    public void put(@NotNull T key, @NotNull Long time) {
         inCooldown.put(key, System.currentTimeMillis() + time);
     }
 
@@ -94,7 +95,7 @@ public class CooldownMap<T> {
      *        Object to remove from cooldown.
      *
      */
-    private void remove(T key) {
+    private void remove(@NotNull T key) {
         inCooldown.remove(key);
     }
 
@@ -107,7 +108,7 @@ public class CooldownMap<T> {
      * @return If the object is present in cooldown, true, else, false.
      *
      */
-    public boolean isInCooldown(T key) {
+    public boolean isInCooldown(@NotNull T key) {
         if (!inCooldown.containsKey(key))
             return false;
 
@@ -125,7 +126,7 @@ public class CooldownMap<T> {
      *
      * @return Remaining time in millis.
      * */
-    public long getRemainingTime(T key) {
+    public long getRemainingTime(@NotNull T key) {
         if (!inCooldown.containsKey(key))
             return 0L;
 
@@ -141,7 +142,7 @@ public class CooldownMap<T> {
      * @return A formatted string with remaining time cooldown.
      */
     @Deprecated
-    private String getRemainingTimeFormatted(T key) {
+    private String getRemainingTimeFormatted(@NotNull T key) {
         val remainingTimeInMillis = getRemainingTime(key);
 
         return "";

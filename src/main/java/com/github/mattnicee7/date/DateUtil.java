@@ -41,6 +41,13 @@ public class DateUtil {
     private static final DateTimeFormatter DEFAULT_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     /**
+     * Not instantiable
+     */
+    private DateUtil() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
+    /**
      * Get the now timestamp with the default time formatter.
      *
      * @return The now timestamp formatted with the default time formatter.

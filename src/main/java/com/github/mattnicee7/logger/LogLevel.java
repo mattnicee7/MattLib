@@ -5,17 +5,20 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@Getter
 public enum LogLevel {
 
-    WARNING(ConsoleUtil.ANSI_RED_BACKGROUND + "[WARNING]" + ConsoleUtil.ANSI_RESET),
-    INFO(ConsoleUtil.ANSI_CYAN_BACKGROUND + "[INFO]" + ConsoleUtil.ANSI_RESET),
-    FINE(ConsoleUtil.ANSI_GREEN_BACKGROUND + "[FINE]" + ConsoleUtil.ANSI_RESET);
+    WARNING("[WARNING]" + ConsoleUtil.ANSI_RESET, ConsoleUtil.ANSI_RED_BACKGROUND),
+    INFO("[INFO]" + ConsoleUtil.ANSI_RESET, ConsoleUtil.ANSI_CYAN_BACKGROUND),
+    FINE( "[FINE]" + ConsoleUtil.ANSI_RESET, ConsoleUtil.ANSI_GREEN_BACKGROUND);
 
-    @Getter
     private final String name;
 
-    LogLevel(String name) {
+    private final String color;
+
+    LogLevel(String name, String color) {
         this.name = name;
+        this.color = color;
     }
 
     @Nullable

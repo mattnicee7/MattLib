@@ -13,6 +13,15 @@ public class Logger {
         System.out.println(logLevel.getName() + ": " + message);
     }
 
+    public void log(@NotNull LogLevel logLevel, boolean colored, @NotNull String message) {
+        if (!colored) {
+            log(logLevel, message);
+            return;
+        }
+
+        System.out.println(logLevel.getColor() + logLevel.getName() + ": " + message);
+    }
+
     public void log(@NotNull LogLevel logLevel, @NotNull String message, boolean timeStamp) {
         if (!timeStamp) {
             log(logLevel, message);

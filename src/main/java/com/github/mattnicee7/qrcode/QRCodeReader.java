@@ -29,6 +29,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.imageio.ImageIO;
@@ -48,7 +49,7 @@ public class QRCodeReader {
      * @return The content of qr code.
      */
     @Nullable
-    public static String readQRCode(String path) {
+    public static String readQRCode(@NotNull String path) {
         try {
             BinaryBitmap binaryBitmap = new BinaryBitmap(
                     new HybridBinarizer(
@@ -56,8 +57,7 @@ public class QRCodeReader {
                                     ImageIO.read(
                                             new FileInputStream(path)))));
 
-            Result result = new MultiFormatReader().decode(binaryBitmap);
-            return result.getText();
+            return new MultiFormatReader().decode(binaryBitmap).getText();
         } catch (Exception exception) {
             exception.printStackTrace();
         }

@@ -24,9 +24,11 @@
 
 package com.github.mattnicee7.sql.datasource.factory;
 
+import com.github.mattnicee7.sql.credentials.impl.MariaDBCredentials;
 import com.github.mattnicee7.sql.credentials.impl.MySQLCredentials;
 import com.github.mattnicee7.sql.credentials.impl.PostgreSQLCredentials;
 import com.github.mattnicee7.sql.credentials.impl.SQLiteCredentials;
+import com.github.mattnicee7.sql.datasource.impl.MariaDB;
 import com.github.mattnicee7.sql.datasource.impl.MySQL;
 import com.github.mattnicee7.sql.datasource.impl.PostgreSQL;
 import com.github.mattnicee7.sql.datasource.impl.SQLite;
@@ -126,7 +128,7 @@ public class DataSourceFactory {
      * public class Application {
      *     public static void main(String[] args) {
      *         try {
-     *             DataSource dataSource = DataSourceFactory.createMySQLDataSource(
+     *             DataSource dataSource = DataSourceFactory.createPostgreSQLDataSource(
      *                      PostgreSQLCredentials.of(address, port, database, username, password)
      *             );
      *
@@ -157,6 +159,48 @@ public class DataSourceFactory {
      * */
     public static DataSource createPostgreSQLDataSource(@NotNull PostgreSQLCredentials postgreSQLCredentials) throws DatabaseDriverNotFoundException, DatabaseConnectionException {
         return new PostgreSQL(postgreSQLCredentials);
+    }
+
+    /**
+     * Create a DataSource with MariaDB Url.
+     *
+     * <h2> Example Usage
+     * <pre>
+     *     {@code
+     * public class Application {
+     *     public static void main(String[] args) {
+     *         try {
+     *             DataSource dataSource = DataSourceFactory.createMariaDBDataSource(
+     *                      MariaDBCredentials.of(address, port, database, username, password)
+     *             );
+     *
+     *             // Do something with the dataSource (...)
+     *         } catch (DatabaseConnectionException exception) {
+     *             System.out.println("DatabaseConnection Error: " + exception.getMessage();
+     *         } catch (DriverNotFoundException exception) {
+     *             System.out.println("DriverNotFound Error: " + exception.getMessage();
+     *         }
+     *     }
+     * }}</pre>
+     *
+     * @param mariaDBCredentials
+     *        Credentials of the MariaDB Database.
+     *
+     * @throws DatabaseConnectionException
+     *         <ul type="disc">
+     *             <li>If the credentials is wrong.</li>
+     *         </ul>
+     *
+     * @throws DatabaseDriverNotFoundException
+     *         <ul type="disc">
+     *             <li>If the MariaDB driver was not found.</li>
+     *         </ul>
+     *
+     * @return A datasource with MariaDB connection.
+     *
+     * */
+    public static DataSource createMariaDBDataSource(@NotNull MariaDBCredentials mariaDBCredentials) throws DatabaseDriverNotFoundException, DatabaseConnectionException {
+        return new MariaDB(mariaDBCredentials);
     }
 
 }

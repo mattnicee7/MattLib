@@ -31,10 +31,12 @@ dependencies {
     // PostgreSQL Driver
     implementation('org.postgresql:postgresql:42.3.2')
 
+    // MariaDB Driver
+    implementation('org.mariadb.jdbc:mariadb-java-client:3.0.3')
+
     // QR Code Generator
     implementation('com.google.zxing:core:3.3.0')
     implementation('com.google.zxing:javase:3.3.0')
-
 }
 
 test {

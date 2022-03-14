@@ -54,24 +54,7 @@ public class QRCodeGenerator {
      *        Width of the QRCode image.
      */
     public static void generateQRCode(@NotNull String text, @NotNull String path, int height, int width) {
-        try {
-            BitMatrix matrix = new MultiFormatWriter().encode(
-                    new String(text.getBytes("UTF-8"),
-                            "UTF-8"),
-                    BarcodeFormat.QR_CODE,
-                    width,
-                    height
-            );
-
-            MatrixToImageWriter.writeToPath(
-                    matrix,
-                    path.substring(path.lastIndexOf('.') + 1),
-                    new File(path).getAbsoluteFile().toPath()
-            );
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        generateQRCode(text, path, "UTF-8", height, width);
     }
 
     /**

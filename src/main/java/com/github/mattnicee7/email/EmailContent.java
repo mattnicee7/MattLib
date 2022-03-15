@@ -24,40 +24,44 @@
 
 package com.github.mattnicee7.email;
 
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
-import javax.mail.Message;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
-import java.util.List;
 
-public class EmailService {
+@Getter
+public class EmailContent {
 
-    private final EmailCredentials emailCredentials;
+    private final String subject;
+    private String message;
 
-    public EmailService(@NotNull EmailCredentials emailCredentials) {
-        this.emailCredentials = emailCredentials;
+    public EmailContent(@NotNull String subject, @NotNull String message) {
+        this.subject = subject;
+        this.message = message;
     }
 
-    public static EmailService of(@NotNull EmailCredentials emailCredentials) {
-        return new EmailService(emailCredentials);
+    public static EmailContent of(@NotNull String subject, @NotNull String message) {
+        return new EmailContent(subject, message);
     }
 
-    public void sendEmail(@NotNull String receiver, @NotNull EmailContent emailContent) {
+    public EmailContent addMessage(@NotNull String message) {
+        this.message += message;
+        return this;
+    }
+
+    public MimeMessage build(@NotNull Session session) {
         try {
-            MimeMessage mimeMessage = emailContent.build(emailCredentials.getSession());
-            mimeMessage.setFrom(new InternetAddress(emailCredentials.getEmail()));
-            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
-            Transport.send(mimeMessage);
+            MimeMessage mimeMessage = new MimeMessage(session);
+            mimeMessage.setSubject(subject);
+            mimeMessage.setText(message);
+
+            return mimeMessage;
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-    }
 
-    public void sendEmail(@NotNull List<String> receivers, @NotNull EmailContent emailContent) {
-        for (String receiver : receivers)
-            sendEmail(receiver, emailContent);
+        return null;
     }
 
 }

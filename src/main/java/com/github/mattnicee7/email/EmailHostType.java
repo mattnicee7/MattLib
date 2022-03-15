@@ -24,40 +24,31 @@
 
 package com.github.mattnicee7.email;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.mail.Message;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.List;
+@Getter(AccessLevel.PACKAGE)
+public enum EmailHostType {
 
-public class EmailService {
+    GMAIL("smtp.gmail.com", "465");
 
-    private final EmailCredentials emailCredentials;
+    private final String smtp;
+    private final String port;
 
-    public EmailService(@NotNull EmailCredentials emailCredentials) {
-        this.emailCredentials = emailCredentials;
+    EmailHostType(String smtp, String port) {
+        this.smtp = smtp;
+        this.port = port;
     }
 
-    public static EmailService of(@NotNull EmailCredentials emailCredentials) {
-        return new EmailService(emailCredentials);
-    }
-
-    public void sendEmail(@NotNull String receiver, @NotNull EmailContent emailContent) {
-        try {
-            MimeMessage mimeMessage = emailContent.build(emailCredentials.getSession());
-            mimeMessage.setFrom(new InternetAddress(emailCredentials.getEmail()));
-            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
-            Transport.send(mimeMessage);
-        } catch (Exception exception) {
-            exception.printStackTrace();
+    @Nullable
+    public EmailHostType of(@NotNull String emailHostTypeString) {
+        for (EmailHostType emailHostType : values()) {
+            if (emailHostType.toString().equalsIgnoreCase(emailHostTypeString))
+                return emailHostType;
         }
-    }
 
-    public void sendEmail(@NotNull List<String> receivers, @NotNull EmailContent emailContent) {
-        for (String receiver : receivers)
-            sendEmail(receiver, emailContent);
+        return null;
     }
-
 }

@@ -37,6 +37,8 @@ dependencies {
     // QR Code Generator
     implementation('com.google.zxing:core:3.3.0')
     implementation('com.google.zxing:javase:3.3.0')
+
+    implementation('javax.mail:mail:1.4.7')
 }
 
 test {

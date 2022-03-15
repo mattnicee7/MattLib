@@ -57,19 +57,16 @@ public class CPFChecker implements DocumentChecker<String> {
             }
 
         } else {
-            val cpfFullSplit = string.split("-");
+            val cpfFullSplit = string.replace("-", "")
+                    .replace(".", "")
+                    .split("");
 
-            val cpfSplit = cpfFullSplit[0].split("\\.");
-            val verificationCodeSplit = cpfFullSplit[1].split("");
-
-            for (int i = 0; i < cpfSplit.length; i++) {
-                val cpfPart = cpfSplit[i].split("");
-                for (int j = 0; j < cpfPart.length; j++)
-                    cpfCode.add(Integer.parseInt(cpfPart[j]));
+            for (int i = 0; i < 9; i++) {
+                cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
             }
 
-            for (int i = 0; i < 2; i++) {
-                verificationCodes.add(Integer.parseInt(verificationCodeSplit[i]));
+            for (int i = 9; i < 11; i++) {
+                verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
             }
         }
 

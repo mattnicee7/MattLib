@@ -25,13 +25,68 @@
 package com.github.mattnicee7.document.impl;
 
 import com.github.mattnicee7.document.DocumentChecker;
+import lombok.val;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class CPFChecker implements DocumentChecker<String> {
 
+    private final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{11})");
+    private final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})");
+
     @Override
     public boolean check(@NotNull String string) {
-        return false;
+        if (!ONLY_NUMBERS_PATTERN.matcher(string).matches() && !SEPARATE_NUMBERS_PATTERN.matcher(string).matches())
+            return false;
+
+        final List<Integer> verificationCodes = new ArrayList<>();
+        final List<Integer> cpfCode = new ArrayList<>();
+
+        if (ONLY_NUMBERS_PATTERN.matcher(string).matches()) {
+            val cpfFullSplit = string.split("");
+
+            for (int i = 0; i < 9; i++) {
+                cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
+            }
+
+            for (int i = 9; i < 11; i++) {
+                verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
+            }
+
+        } else {
+            val cpfFullSplit = string.split("-");
+
+            val cpfSplit = cpfFullSplit[0].split("\\.");
+            val verificationCodeSplit = cpfFullSplit[1].split("");
+
+            for (int i = 0; i < cpfSplit.length; i++) {
+                val cpfPart = cpfSplit[i].split("");
+                for (int j = 0; j < cpfPart.length; j++)
+                    cpfCode.add(Integer.parseInt(cpfPart[j]));
+            }
+
+            for (int i = 0; i < 2; i++) {
+                verificationCodes.add(Integer.parseInt(verificationCodeSplit[i]));
+            }
+        }
+
+        return getVerificationCode(10, cpfCode) == verificationCodes.get(0) &&
+                getVerificationCode(11, cpfCode) == verificationCodes.get(1);
+    }
+
+    public int getVerificationCode(int multiplier, List<Integer> cpfCode) {
+        double result = 0.0;
+        for (Integer code : cpfCode) {
+            result += (code * multiplier--);
+        }
+
+        int verificationCode = (result % 11 == 0 || result % 11 == 1) ? 0 : (int) Math.round(11 - (result % 11));
+        cpfCode.add(verificationCode);
+
+        return verificationCode;
     }
 
 }

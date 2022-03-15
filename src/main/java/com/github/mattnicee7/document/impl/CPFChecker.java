@@ -83,7 +83,7 @@ public class CPFChecker implements DocumentChecker<String> {
             result += (code * multiplier--);
         }
 
-        int verificationCode = (result % 11 == 0 || result % 11 == 1) ? 0 : (int) Math.round(11 - (result % 11));
+        int verificationCode = (result % 11 < 2) ? 0 : (int) Math.round(11 - (result % 11));
         cpfCode.add(verificationCode);
 
         return verificationCode;

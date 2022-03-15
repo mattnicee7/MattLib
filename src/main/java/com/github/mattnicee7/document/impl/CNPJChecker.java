@@ -27,11 +27,64 @@ package com.github.mattnicee7.document.impl;
 import com.github.mattnicee7.document.DocumentChecker;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 public class CNPJChecker implements DocumentChecker<String> {
+
+    private final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{14})");
+    private final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2})");
 
     @Override
     public boolean check(@NotNull String string) {
-        return false;
+        if (!SEPARATE_NUMBERS_PATTERN.matcher(string).matches() && !ONLY_NUMBERS_PATTERN.matcher(string).matches())
+            return false;
+
+        final List<Integer> cnpjCode = new ArrayList<>();
+        final List<Integer> verificationCodes = new ArrayList<>();
+        String[] cnpjFullSplit;
+
+        if (ONLY_NUMBERS_PATTERN.matcher(string).matches()) {
+            cnpjFullSplit = string.split("");
+        } else {
+            cnpjFullSplit = string
+                    .replace(".", "")
+                    .replace("/", "")
+                    .replace("-", "")
+                    .split("");
+        }
+
+        for (int i = 0; i < 12; i++) {
+            cnpjCode.add(Integer.parseInt(cnpjFullSplit[i]));
+        }
+
+        for (int i = 12; i < 14; i++) {
+            verificationCodes.add(Integer.parseInt(cnpjFullSplit[i]));
+        }
+
+        return getVerificationCode(5, cnpjCode) == verificationCodes.get(0) &&
+                getVerificationCode(6, cnpjCode) == verificationCodes.get(1);
+    }
+
+    public int getVerificationCode(int multiplier, List<Integer> cnpjCode) {
+        double result = 0.0;
+        int index = 0;
+
+        for (int i = multiplier; i >= 2; i--) {
+            result += cnpjCode.get(index) * i;
+            index++;
+        }
+
+        for (int i = 9; i >= 2; i--) {
+            result += cnpjCode.get(index) * i;
+            index++;
+        }
+
+        int verificationCode = (result % 11 < 2) ? 0 : 11 - (int) Math.round(result % 11);
+        cnpjCode.add(verificationCode);
+
+        return verificationCode;
     }
 
 }

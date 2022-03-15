@@ -30,7 +30,9 @@ import com.github.mattnicee7.document.impl.CPFChecker;
 
 public class DocumentUtil {
 
+    /** The CPF Checker instance. */
     private static final DocumentChecker<String> CPF_CHECKER = new CPFChecker();
+    /** The CNPJ Checker instance. */
     private static final DocumentChecker<String> CNPJ_CHECKER = new CNPJChecker();
 
     /**
@@ -41,15 +43,37 @@ public class DocumentUtil {
     }
 
     /**
-     * Format: xxx.xxx.xxx.xx
-     * */
+     * Return if the cpf informed is valid.
+     * <p>
+     * Available Formats:
+     * <ul>
+     *    <li>xxxxxxxxxxx</li>
+     *    <li>xxx.xxx.xxx-xx</li>
+     * </ul>
+     *
+     * @param cpf
+     *        The cpf you want to know if it's valid
+     *
+     * @return If cpf informed is valid
+     */
     public static boolean isCPFValid(String cpf) {
         return CPF_CHECKER.check(cpf);
     }
 
-    /*
-    * Format: xx.xxx.xxx/xxxx-xx
-    * */
+    /**
+     * Return if the cnpj informed is valid.
+     * <p>
+     * Available Formats:
+     * <ul>
+     *     <li>xxxxxxxxxxxxxx</li>
+     *     <li>xx.xxx.xxx/xxxx-xx</li>
+     * </ul>
+     *
+     * @param cnpj
+     *        The cnpj you want to know if it's valid
+     *
+     * @return If the cnpj informed is valid
+     */
     public static boolean isCNPJValid(String cnpj) {
         return CNPJ_CHECKER.check(cnpj);
     }

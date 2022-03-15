@@ -44,30 +44,23 @@ public class CPFChecker implements DocumentChecker<String> {
 
         final List<Integer> verificationCodes = new ArrayList<>();
         final List<Integer> cpfCode = new ArrayList<>();
+        final String[] cpfFullSplit;
 
         if (ONLY_NUMBERS_PATTERN.matcher(string).matches()) {
-            val cpfFullSplit = string.split("");
-
-            for (int i = 0; i < 9; i++) {
-                cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
-            }
-
-            for (int i = 9; i < 11; i++) {
-                verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
-            }
+            cpfFullSplit = string.split("");
 
         } else {
-            val cpfFullSplit = string.replace("-", "")
+            cpfFullSplit = string.replace("-", "")
                     .replace(".", "")
                     .split("");
+        }
 
-            for (int i = 0; i < 9; i++) {
-                cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
-            }
+        for (int i = 0; i < 9; i++) {
+            cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
+        }
 
-            for (int i = 9; i < 11; i++) {
-                verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
-            }
+        for (int i = 9; i < 11; i++) {
+            verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
         }
 
         return getVerificationCode(10, cpfCode) == verificationCodes.get(0) &&

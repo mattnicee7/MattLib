@@ -77,7 +77,7 @@ public class CPFChecker implements DocumentChecker<String> {
                 getVerificationCode(11, cpfCode) == verificationCodes.get(1);
     }
 
-    public int getVerificationCode(int multiplier, List<Integer> cpfCode) {
+    private int getVerificationCode(int multiplier, List<Integer> cpfCode) {
         double result = 0.0;
         for (Integer code : cpfCode) {
             result += (code * multiplier--);

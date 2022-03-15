@@ -67,7 +67,7 @@ public class CNPJChecker implements DocumentChecker<String> {
                 getVerificationCode(6, cnpjCode) == verificationCodes.get(1);
     }
 
-    public int getVerificationCode(int multiplier, List<Integer> cnpjCode) {
+    private int getVerificationCode(int multiplier, List<Integer> cnpjCode) {
         double result = 0.0;
         int index = 0;
 

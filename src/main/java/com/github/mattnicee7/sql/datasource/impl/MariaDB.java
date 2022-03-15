@@ -47,9 +47,9 @@ public class MariaDB implements DataSource {
                     mariaDBCredentials.getUsername(),
                     mariaDBCredentials.getPassword());
         } catch (ClassNotFoundException exception) {
-            throw new DatabaseDriverNotFoundException("MariaDB Driver not found");
+            throw new DatabaseDriverNotFoundException("MariaDB Driver not found.");
         } catch (SQLException exception) {
-            throw new DatabaseConnectionException("Failed to connect with MariaDB");
+            throw new DatabaseConnectionException("Failed to connect with MariaDB.");
         }
     }
 

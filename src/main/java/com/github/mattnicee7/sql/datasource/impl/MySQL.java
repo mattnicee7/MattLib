@@ -51,10 +51,10 @@ public class MySQL implements DataSource {
                     mySQLCredentials.getPassword()
             );
             
-        } catch (SQLException exception) {
-            throw new DatabaseConnectionException("Failed to connect with MySQL");
         } catch (ClassNotFoundException exception) {
             throw new DatabaseDriverNotFoundException("MySQL Driver not found.");
+        } catch (SQLException exception) {
+            throw new DatabaseConnectionException("Failed to connect with MySQL.");
         }
     }
 
@@ -66,7 +66,8 @@ public class MySQL implements DataSource {
     @Override
     public void closeConnection() {
         try {
-            connection.close();
+            if (!connection.isClosed())
+                connection.close();
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

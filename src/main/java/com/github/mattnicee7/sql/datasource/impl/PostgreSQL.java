@@ -49,9 +49,9 @@ public class PostgreSQL implements DataSource {
             );
 
         } catch (ClassNotFoundException exception) {
-            throw new DatabaseDriverNotFoundException("PostgreSQL Driver not found");
+            throw new DatabaseDriverNotFoundException("PostgreSQL Driver not found.");
         } catch (SQLException exception) {
-            throw new DatabaseConnectionException("Failed to connect with PostgreSQL");
+            throw new DatabaseConnectionException("Failed to connect with PostgreSQL.");
         }
     }
 
@@ -63,7 +63,7 @@ public class PostgreSQL implements DataSource {
     @Override
     public void closeConnection() {
         try {
-            if (connection != null)
+            if (!connection.isClosed())
                 connection.close();
         } catch (SQLException exception) {
             exception.printStackTrace();

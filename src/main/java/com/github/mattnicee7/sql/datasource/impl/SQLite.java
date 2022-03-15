@@ -46,7 +46,7 @@ public class SQLite implements DataSource {
 
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException exception) {
-            throw new DatabaseDriverNotFoundException("SQLite driver not found");
+            throw new DatabaseDriverNotFoundException("SQLite driver not found.");
         }
 
     }

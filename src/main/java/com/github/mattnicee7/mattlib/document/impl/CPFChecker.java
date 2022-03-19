@@ -45,16 +45,9 @@ public class CPFChecker implements DocumentChecker<String> {
 
         final List<Integer> verificationCodes = new ArrayList<>();
         final List<Integer> cpfCode = new ArrayList<>();
-        final String[] cpfFullSplit;
-
-        if (ONLY_NUMBERS_PATTERN.matcher(string).matches()) {
-            cpfFullSplit = string.split("");
-
-        } else {
-            cpfFullSplit = string.replace("-", "")
-                    .replace(".", "")
-                    .split("");
-        }
+        final String[] cpfFullSplit = string.replace("-", "")
+                .replace(".", "")
+                .split("");
 
         for (int i = 0; i < 9; i++) {
             cpfCode.add(Integer.parseInt(cpfFullSplit[i]));

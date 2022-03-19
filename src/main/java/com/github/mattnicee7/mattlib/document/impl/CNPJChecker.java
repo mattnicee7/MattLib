@@ -45,17 +45,10 @@ public class CNPJChecker implements DocumentChecker<String> {
 
         final List<Integer> cnpjCode = new ArrayList<>();
         final List<Integer> verificationCodes = new ArrayList<>();
-        String[] cnpjFullSplit;
-
-        if (ONLY_NUMBERS_PATTERN.matcher(string).matches()) {
-            cnpjFullSplit = string.split("");
-        } else {
-            cnpjFullSplit = string
-                    .replace(".", "")
-                    .replace("/", "")
-                    .replace("-", "")
-                    .split("");
-        }
+        String[] cnpjFullSplit = string.replace(".", "")
+                .replace("/", "")
+                .replace("-", "")
+                .split("");
 
         for (int i = 0; i < 12; i++) {
             cnpjCode.add(Integer.parseInt(cnpjFullSplit[i]));

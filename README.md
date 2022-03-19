@@ -60,3 +60,9 @@ dependencies {
 ✱ [Javax Mail](https://mvnrepository.com/artifact/javax.mail)
 
 ✱ [Jetbrains Annotation](https://www.jetbrains.com/help/idea/annotating-source-code.html)
+
+# Contribuidores
+
+✱ [mattnicee7](https://github.com/mattnicee7/)
+
+✱ [zGumeloBr](https://github.com/zGumeloBr)

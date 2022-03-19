@@ -53,7 +53,7 @@ dependencies {
 
 # Exemplos de usos
 
-# Bibliotecas Usadas
+# Bibliotecas utilizadas
 
 ✱ [Lombok](https://projectlombok.org/)
 

@@ -40,6 +40,17 @@ Lista de recursos disponíveis na biblioteca:
 
 # Gradle
 
+```gradle
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+            implementation 'com.github.mattnicee7.mattlib:{MODULE}:{VERSION}'
+    }
+```
+
 # Exemplos de usos
 
 # Bibliotecas Usadas

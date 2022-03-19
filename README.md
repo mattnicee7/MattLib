@@ -1,7 +1,7 @@
 # MattLib
 
-[![GitHub stars](https://img.shields.io/github/stars/mattnicee7/mattlib)](https://github.com/mattnicee7/MattLib/stargazers)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0b674fb11244458dbfe9ea2134909964)](https://www.codacy.com/gh/mattnicee7/MattLib/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mattnicee7/MattLib&amp;utm_campaign=Badge_Grade)
+[![GitHub stars](https://img.shields.io/github/stars/mattnicee7/mattlib)](https://github.com/mattnicee7/MattLib/stargazers?style=for-the-badge)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0b674fb11244458dbfe9ea2134909964)](https://www.codacy.com/gh/mattnicee7/MattLib/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mattnicee7/MattLib&amp;utm_campaign=Badge_Grade?style=for-the-badge)
 
 Uma biblioteca completa para seus projetos, com funções que abrangem desde de banco de dados como MySQL, SQLite, PostgreSQL, MariaDB a verificação avançada de documentos como CPF/CNPJ. Além de um código limpo e robusto facilitando o uso.
 

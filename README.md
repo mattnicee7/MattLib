@@ -23,6 +23,21 @@ Lista de recursos disponíveis na biblioteca:
 
 # Maven
 
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.mattnicee7</groupId>
+    <artifactId>{MODULE}</artifactId>
+    <version>{VERSION}</version>
+</dependency>
+```
+
 # Gradle
 
 # Exemplos de usos

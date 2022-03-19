@@ -7,7 +7,7 @@ Uma biblioteca completa para seus projetos, com funções que abrangem desde de 
 
 # Recursos
 
-Lista de recursos disponíveis na biblioteca:
+Lista dos principais recursos disponíveis na biblioteca:
 
 ✱ Verificador de documentos (CPF e CNPJ).
 
@@ -20,6 +20,8 @@ Lista de recursos disponíveis na biblioteca:
 ✱ Conector de SQL com opções de 4 database: MySQL, SQLite, PostgreSQL, MariaDB.
 
 ✱ Formatador de horários e tempo.
+
+✱ E muito mais...
 
 # Maven
 

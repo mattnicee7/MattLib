@@ -3,10 +3,9 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
-group = "com.github.mattnicee7"
-version = "1.2.0"
-
 allprojects {
+    group = "com.github.mattnicee7.mattlib"
+    version = "1.2.1"
 
     apply(plugin = "java")
     apply(plugin = "com.github.johnrengelman.shadow")

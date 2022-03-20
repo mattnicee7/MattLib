@@ -24,17 +24,17 @@
 
 package com.github.mattnicee7.mattlib.datasource.factory;
 
-import com.github.mattnicee7.mattlib.sql.credentials.impl.MariaDBCredentials;
-import com.github.mattnicee7.mattlib.sql.credentials.impl.MySQLCredentials;
-import com.github.mattnicee7.mattlib.sql.credentials.impl.PostgreSQLCredentials;
-import com.github.mattnicee7.mattlib.sql.credentials.impl.SQLiteCredentials;
+import com.github.mattnicee7.mattlib.credentials.impl.MariaDBCredentials;
+import com.github.mattnicee7.mattlib.credentials.impl.MySQLCredentials;
+import com.github.mattnicee7.mattlib.credentials.impl.PostgreSQLCredentials;
+import com.github.mattnicee7.mattlib.credentials.impl.SQLiteCredentials;
 import com.github.mattnicee7.mattlib.datasource.impl.MariaDB;
 import com.github.mattnicee7.mattlib.datasource.impl.MySQL;
 import com.github.mattnicee7.mattlib.datasource.impl.PostgreSQL;
 import com.github.mattnicee7.mattlib.datasource.impl.SQLite;
 import com.github.mattnicee7.mattlib.datasource.DataSource;
-import com.github.mattnicee7.mattlib.sql.exception.DatabaseConnectionException;
-import com.github.mattnicee7.mattlib.sql.exception.DatabaseDriverNotFoundException;
+import com.github.mattnicee7.mattlib.exception.DatabaseConnectionException;
+import com.github.mattnicee7.mattlib.exception.DatabaseDriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 /**

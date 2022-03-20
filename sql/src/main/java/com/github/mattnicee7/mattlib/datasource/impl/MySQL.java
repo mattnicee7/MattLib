@@ -24,10 +24,10 @@
 
 package com.github.mattnicee7.mattlib.datasource.impl;
 
+import com.github.mattnicee7.mattlib.credentials.impl.MySQLCredentials;
 import com.github.mattnicee7.mattlib.datasource.DataSource;
-import com.github.mattnicee7.mattlib.sql.credentials.impl.MySQLCredentials;
-import com.github.mattnicee7.mattlib.sql.exception.DatabaseConnectionException;
-import com.github.mattnicee7.mattlib.sql.exception.DatabaseDriverNotFoundException;
+import com.github.mattnicee7.mattlib.exception.DatabaseConnectionException;
+import com.github.mattnicee7.mattlib.exception.DatabaseDriverNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;

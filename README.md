@@ -9,6 +9,8 @@ Uma biblioteca completa para seus projetos, com funções que abrangem desde de 
 
 Lista dos principais recursos disponíveis na biblioteca:
 
+✱ Projeto multi-modulo dividido entre misc e sql. Você pode escolher o módulo que você quer usar.
+
 ✱ Verificador de documentos (CPF e CNPJ).
 
 ✱ Serviço de envio de e-mails automatico.
@@ -34,9 +36,9 @@ Lista dos principais recursos disponíveis na biblioteca:
 </repositories>
 
 <dependency>
-    <groupId>com.github.mattnicee7</groupId>
-    <artifactId>{MODULE}</artifactId>
-    <version>{VERSION}</version>
+    <groupId>com.github.mattnicee7.mattlib</groupId>
+    <artifactId>MODULE</artifactId>
+    <version>VERSION</version>
 </dependency>
 ```
 
@@ -49,7 +51,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.mattnicee7.mattlib:{MODULE}:{VERSION}'
+    implementation 'com.github.mattnicee7.mattlib:MODULE:VERSION'
 }
 ```
 

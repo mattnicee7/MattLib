@@ -1,6 +1,7 @@
 plugins {
     java
     id("com.github.johnrengelman.shadow") version "7.1.0"
+    id("maven-publish")
 }
 
 allprojects {
@@ -23,4 +24,20 @@ allprojects {
         implementation("org.jetbrains:annotations:23.0.0")
     }
 
+}
+
+subprojects {
+    apply(plugin = "maven-publish")
+
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = project.group as String?
+                artifactId = project.name
+                version = project.version as String?
+
+                from(components["java"])
+            }
+        }
+    }
 }

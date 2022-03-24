@@ -55,6 +55,11 @@ dependencies {
 }
 ```
 
+# TO-DO List
+
+* Refactor logger package
+* Relocate in some dependencies
+
 # Exemplos de usos
 
 # Bibliotecas utilizadas

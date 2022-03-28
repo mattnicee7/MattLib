@@ -35,11 +35,13 @@ Lista dos principais recursos disponíveis na biblioteca:
     </repository>
 </repositories>
 
-<dependency>
-    <groupId>com.github.mattnicee7.mattlib</groupId>
-    <artifactId>MODULE</artifactId>
-    <version>VERSION</version>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.github.mattnicee7.mattlib</groupId>
+        <artifactId>MODULE</artifactId>
+        <version>VERSION</version>
+    </dependency>
+</dependencies>
 ```
 
 # Gradle

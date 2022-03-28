@@ -48,7 +48,6 @@ Lista dos principais recursos disponíveis na biblioteca:
 
 ```gradle
 repositories {
-    ...
     maven { url 'https://jitpack.io' }
 }
 

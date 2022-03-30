@@ -37,12 +37,11 @@ public enum LogLevel {
     FINE( "[FINE]" + ConsoleUtil.ANSI_RESET, ConsoleUtil.ANSI_GREEN_BACKGROUND);
 
     private final String name;
+    private final String backgroundColor;
 
-    private final String color;
-
-    LogLevel(String name, String color) {
+    LogLevel(@NotNull String name, @Nullable String backgroundColor) {
         this.name = name;
-        this.color = color;
+        this.backgroundColor = backgroundColor;
     }
 
     @Nullable

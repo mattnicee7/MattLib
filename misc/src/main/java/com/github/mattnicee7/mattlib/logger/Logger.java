@@ -33,10 +33,31 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class Logger {
 
+    /**
+     * Log a message with the {@link LogLevel} level.
+     *
+     * @param logLevel
+     *        The {@link LogLevel} level.
+     *
+     * @param message
+     *        The message to log.
+     */
     public void log(@NotNull LogLevel logLevel, @NotNull String message) {
         System.out.println(logLevel.getName() + ": " + message);
     }
 
+    /**
+     * Log a message with the {@link LogLevel} level and timestamp.
+     *
+     * @param logLevel
+     *        The {@link LogLevel} level.
+     *
+     * @param message
+     *        The message to log.
+     *
+     * @param timeStamp
+     *        If you want timestamp to be added to the log message.
+     * */
     public void log(@NotNull LogLevel logLevel, @NotNull String message, boolean timeStamp) {
         if (!timeStamp) {
             log(logLevel, message);
@@ -46,6 +67,21 @@ public class Logger {
         System.out.println(DateUtil.getNowTimeStamp() + " " + logLevel.getName() + ": " + message);
     }
 
+    /**
+     * Log a message with {@link LogLevel} level, timestamp and yours {@link DateTimeFormatter}.
+     *
+     * @param logLevel
+     *        The {@link LogLevel} level.
+     *
+     * @param message
+     *        The message to log.
+     *
+     * @param timeStamp
+     *        If you want timestamp to be added to the log message.
+     *
+     * @param dateTimeFormatter
+     *        The {@link DateTimeFormatter} to use.
+     * */
     public void log(@NotNull LogLevel logLevel, @NotNull String message, boolean timeStamp, @NotNull DateTimeFormatter dateTimeFormatter) {
         if (!timeStamp) {
             log(logLevel, message);

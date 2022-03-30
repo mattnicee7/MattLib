@@ -58,8 +58,8 @@ dependencies {
 
 # TO-DO List
 
-* Refactor logger package
 * Relocate in some dependencies
+* Add more features
 
 # Exemplos de usos
 

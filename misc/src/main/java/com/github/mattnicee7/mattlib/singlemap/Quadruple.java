@@ -33,10 +33,10 @@ import lombok.Setter;
 @Setter
 public class Quadruple<F, S, T, Q> {
 
-    private final F first;
-    private final S second;
-    private final T third;
-    private final Q fourth;
+    private F first;
+    private S second;
+    private T third;
+    private Q fourth;
 
     public static <F, S, T, Q> Quadruple<F, S, T, Q> of(F first, S second, T third, Q fourth) {
         return new Quadruple<>(first, second, third, fourth);

@@ -31,12 +31,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * This class is responsible to check if a CNPJ is valid.
+ * Attention: it does not verify if the CNPJ exists, only if it is valid, through verifications in the verification codes.
+ *
+ * <h2>Available formats</h2>
+ * <ul type="disc">
+ *     <li>xxxxxxxxxxxxxx</li>
+ *     <li>xx.xxx.xxx/xxxx-xx</li>
+ * </ul>
+ *
+ * See more about this calculation <a href="https://www.macoratti.net/alg_cnpj.htm">here</a>.
+ **/
 public class CNPJChecker implements DocumentChecker<String> {
 
-    /* Pattern: 12345678901234 */
-    private final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{14})");
-    /* Pattern: 12.345.678/9012-34 */
-    private final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2})");
+    /** Pattern: 12345678901234 */
+    private static final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{14})");
+    /** Pattern: 12.345.678/9012-34 */
+    private static final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2})");
 
     @Override
     public boolean check(@NotNull String string) {
@@ -45,23 +57,31 @@ public class CNPJChecker implements DocumentChecker<String> {
 
         final List<Integer> cnpjCode = new ArrayList<>();
         final List<Integer> verificationCodes = new ArrayList<>();
-        String[] cnpjFullSplit = string.replace(".", "")
+        final String[] cnpjFullSplit = string.replace(".", "")
                 .replace("/", "")
                 .replace("-", "")
                 .split("");
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 12; i++)
             cnpjCode.add(Integer.parseInt(cnpjFullSplit[i]));
-        }
 
-        for (int i = 12; i < 14; i++) {
+        for (int i = 12; i < 14; i++)
             verificationCodes.add(Integer.parseInt(cnpjFullSplit[i]));
-        }
 
-        return getVerificationCode(5, cnpjCode) == verificationCodes.get(0) &&
-                getVerificationCode(6, cnpjCode) == verificationCodes.get(1);
+        return verificationCodesMatches(cnpjCode, verificationCodes);
     }
 
+    /**
+     * Get verification code of a cnpj by multiplier.
+     *
+     * @param multiplier
+     *        The multiplier that you want to verify.
+     *
+     * @param cnpjCode
+     *        The cnpj codes.
+     *
+     * @return The verification code.
+     */
     private int getVerificationCode(int multiplier, List<Integer> cnpjCode) {
         double result = 0.0;
         int index = 0;
@@ -80,6 +100,22 @@ public class CNPJChecker implements DocumentChecker<String> {
         cnpjCode.add(verificationCode);
 
         return verificationCode;
+    }
+
+    /**
+     * Verify if cnpj codes matches with verification codes informed.
+     *
+     * @param cnpjCode
+     *        The cnpj codes.
+     *
+     * @param verificationCodes
+     *        The verification codes informed.
+     *
+     * @return If the verification codes matches.
+     */
+    private boolean verificationCodesMatches(List<Integer> cnpjCode, List<Integer> verificationCodes) {
+        return getVerificationCode(5, cnpjCode) == verificationCodes.get(0) &&
+                getVerificationCode(6, cnpjCode) == verificationCodes.get(1);
     }
 
 }

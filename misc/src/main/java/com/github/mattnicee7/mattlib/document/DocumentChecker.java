@@ -26,6 +26,9 @@ package com.github.mattnicee7.mattlib.document;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * The DocumentChecker is used to check if a Document is valid.
+ * */
 public interface DocumentChecker<T> {
 
     boolean check(@NotNull T t);

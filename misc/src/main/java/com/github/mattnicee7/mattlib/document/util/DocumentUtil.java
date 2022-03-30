@@ -28,6 +28,9 @@ import com.github.mattnicee7.mattlib.document.impl.CPFChecker;
 import com.github.mattnicee7.mattlib.document.DocumentChecker;
 import com.github.mattnicee7.mattlib.document.impl.CNPJChecker;
 
+/**
+ * Utility class to documents.
+ * */
 public class DocumentUtil {
 
     /** The CPF Checker instance. */
@@ -44,12 +47,6 @@ public class DocumentUtil {
 
     /**
      * Return if the cpf informed is valid.
-     * <p>
-     * Available Formats:
-     * <ul>
-     *    <li>xxxxxxxxxxx</li>
-     *    <li>xxx.xxx.xxx-xx</li>
-     * </ul>
      *
      * @param cpf
      *        The cpf you want to know if it's valid
@@ -62,12 +59,6 @@ public class DocumentUtil {
 
     /**
      * Return if the cnpj informed is valid.
-     * <p>
-     * Available Formats:
-     * <ul>
-     *     <li>xxxxxxxxxxxxxx</li>
-     *     <li>xx.xxx.xxx/xxxx-xx</li>
-     * </ul>
      *
      * @param cnpj
      *        The cnpj you want to know if it's valid

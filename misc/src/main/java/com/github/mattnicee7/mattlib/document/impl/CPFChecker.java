@@ -31,12 +31,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * This class is responsible to check if a CPF is valid.
+ * Attention: it does not verify if the CPF exists, only if it is valid, through verifications in the verification codes.
+ *
+ * <h2>Available formats</h2>
+ * <ul type="disc">
+ *    <li>xxxxxxxxxxx</li>
+ *    <li>xxx.xxx.xxx-xx</li>
+ * </ul>
+ *
+ * See more about this calculation <a href="https://dicasdeprogramacao.com.br/algoritmo-para-validar-cpf/">here</a>.
+ */
 public class CPFChecker implements DocumentChecker<String> {
 
     /* Pattern: 12345678901 */
-    private final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{11})");
+    private static final Pattern ONLY_NUMBERS_PATTERN = Pattern.compile("(\\d{11})");
     /* Pattern: 123.456.789-01 */
-    private final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})");
+    private static final Pattern SEPARATE_NUMBERS_PATTERN = Pattern.compile("(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})");
 
     @Override
     public boolean check(@NotNull String string) {
@@ -49,16 +61,13 @@ public class CPFChecker implements DocumentChecker<String> {
                 .replace(".", "")
                 .split("");
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++)
             cpfCode.add(Integer.parseInt(cpfFullSplit[i]));
-        }
 
-        for (int i = 9; i < 11; i++) {
+        for (int i = 9; i < 11; i++)
             verificationCodes.add(Integer.parseInt(cpfFullSplit[i]));
-        }
 
-        return getVerificationCode(10, cpfCode) == verificationCodes.get(0) &&
-                getVerificationCode(11, cpfCode) == verificationCodes.get(1);
+        return verificationCodesMatches(cpfCode, verificationCodes);
     }
 
     private int getVerificationCode(int multiplier, List<Integer> cpfCode) {
@@ -71,6 +80,11 @@ public class CPFChecker implements DocumentChecker<String> {
         cpfCode.add(verificationCode);
 
         return verificationCode;
+    }
+
+    private boolean verificationCodesMatches(List<Integer> cpfCode, List<Integer> verificationCodes) {
+        return getVerificationCode(10, cpfCode) == verificationCodes.get(0) &&
+                getVerificationCode(11, cpfCode) == verificationCodes.get(1);
     }
 
 }

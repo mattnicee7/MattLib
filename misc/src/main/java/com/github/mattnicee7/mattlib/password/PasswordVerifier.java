@@ -92,7 +92,7 @@ public class PasswordVerifier {
 
         for (char character : passwordArray) {
             if (characters.contains(character))
-                return false;
+                return true;
 
             characters.add(character);
         }

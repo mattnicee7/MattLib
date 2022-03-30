@@ -32,6 +32,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 
+/**
+ * Class responsible to storage email credentials and send emails.
+ * */
 public class EmailService {
 
     private final EmailCredentials emailCredentials;
@@ -44,6 +47,15 @@ public class EmailService {
         return new EmailService(emailCredentials);
     }
 
+    /**
+     * Send email to a receiver.
+     *
+     * @param receiver
+     *        The receiver of the email.
+     *
+     * @param emailContent
+     *        The content of the email.
+     * */
     public void sendEmail(@NotNull String receiver, @NotNull EmailContent emailContent) {
         try {
             MimeMessage mimeMessage = emailContent.build(emailCredentials.getSession());
@@ -55,6 +67,15 @@ public class EmailService {
         }
     }
 
+    /**
+     * Send email to a multiples receivers.
+     *
+     * @param receivers
+     *        The receivers of the email.
+     *
+     * @param emailContent
+     *        The content of the email.
+     * */
     public void sendEmail(@NotNull List<String> receivers, @NotNull EmailContent emailContent) {
         for (String receiver : receivers)
             sendEmail(receiver, emailContent);

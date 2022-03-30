@@ -29,6 +29,9 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Enum responsible to storage the all options of email-hosts to use.
+ * */
 @Getter(AccessLevel.PACKAGE)
 public enum EmailHostType {
 
@@ -44,11 +47,11 @@ public enum EmailHostType {
 
     @Nullable
     public EmailHostType of(@NotNull String emailHostTypeString) {
-        for (EmailHostType emailHostType : values()) {
+        for (EmailHostType emailHostType : values())
             if (emailHostType.toString().equalsIgnoreCase(emailHostTypeString))
                 return emailHostType;
-        }
 
         return null;
     }
+
 }

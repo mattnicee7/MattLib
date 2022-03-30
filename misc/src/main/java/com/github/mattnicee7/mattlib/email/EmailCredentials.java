@@ -33,6 +33,9 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
 
+/**
+ * Class responsible to storage and provide access to email credentials.
+ * */
 @Getter(AccessLevel.PACKAGE)
 public class EmailCredentials {
 
@@ -57,7 +60,7 @@ public class EmailCredentials {
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.socketFactory.fallback", "false");
 
-        Authenticator authenticator = new Authenticator() {
+        final Authenticator authenticator = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(email, password);

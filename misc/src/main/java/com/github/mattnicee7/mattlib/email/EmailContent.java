@@ -26,10 +26,14 @@ package com.github.mattnicee7.mattlib.email;
 
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Class responsible to manage the email content.
+ * */
 @Getter
 public class EmailContent {
 
@@ -45,11 +49,27 @@ public class EmailContent {
         return new EmailContent(subject, message);
     }
 
+    /**
+     * Concat message into the current message.
+     *
+     * @param message
+     *        the message to concat.
+     *
+     * @return this.
+     * */
     public EmailContent addMessage(@NotNull String message) {
         this.message += message;
         return this;
     }
 
+    /**
+     * Build message to a MimeMessage.
+     *
+     * @param session
+     *        the session to use.
+     *
+     * @return the MimeMessage.
+     * */
     protected MimeMessage build(@NotNull Session session) {
         try {
             MimeMessage mimeMessage = new MimeMessage(session);

@@ -59,7 +59,8 @@ dependencies {
 # TO-DO List
 
 * Relocate in some dependencies
-* Add more features
+* Add more features (misc, sql)
+* Add features in spigot (utils, builders)
 
 # Exemplos de usos
 

@@ -30,6 +30,7 @@ import javax.mail.Message;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,13 +51,14 @@ public class EmailService {
     /**
      * Send email to a receiver.
      *
+     * @param emailContent
+     *        The content of the email.
+     *
      * @param receiver
      *        The receiver of the email.
      *
-     * @param emailContent
-     *        The content of the email.
      * */
-    public void sendEmail(@NotNull String receiver, @NotNull EmailContent emailContent) {
+    public void sendEmail(@NotNull EmailContent emailContent, @NotNull String receiver) {
         try {
             MimeMessage mimeMessage = emailContent.build(emailCredentials.getSession());
             mimeMessage.setFrom(new InternetAddress(emailCredentials.getEmail()));
@@ -70,15 +72,30 @@ public class EmailService {
     /**
      * Send email to a multiples receivers.
      *
-     * @param receivers
-     *        The receivers of the email.
      *
      * @param emailContent
      *        The content of the email.
+     *
+     * @param receivers
+     *        The receivers of the email.
      * */
-    public void sendEmail(@NotNull List<String> receivers, @NotNull EmailContent emailContent) {
+    public void sendEmail(@NotNull EmailContent emailContent, @NotNull List<String> receivers) {
         for (String receiver : receivers)
-            sendEmail(receiver, emailContent);
+            sendEmail(emailContent, receiver);
+    }
+
+    /**
+     * Send email to a multiples receivers.
+     *
+     *
+     * @param emailContent
+     *        The content of the email.
+     *
+     * @param receivers
+     *        The receivers of the email.
+     * */
+    public void sendEmail(@NotNull EmailContent emailContent, String... receivers) {
+        sendEmail(emailContent, Arrays.asList(receivers));
     }
 
 }

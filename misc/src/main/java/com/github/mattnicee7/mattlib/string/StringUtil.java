@@ -22,8 +22,14 @@
  *  SOFTWARE.
  */
 
-
 package com.github.mattnicee7.mattlib.string;
 
+import java.util.function.Function;
+
 public class StringUtil {
+
+    public String format(String message, Function<String, String> format) {
+        return format.apply(message);
+    }
+
 }

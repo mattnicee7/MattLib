@@ -28,7 +28,7 @@ import java.util.function.Function;
 
 public class StringUtil {
 
-    public String format(String message, Function<String, String> format) {
+    public static String format(String message, Function<String, String> format) {
         return format.apply(message);
     }
 

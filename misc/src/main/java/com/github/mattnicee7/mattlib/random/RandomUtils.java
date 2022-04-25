@@ -33,7 +33,7 @@ import java.util.Random;
 /**
  * Utility class for random things.
  */
-public class RandomUtil {
+public class RandomUtils {
 
     /**
      * The random instance.
@@ -53,7 +53,7 @@ public class RandomUtil {
     /**
      * Not instantiable
      */
-    private RandomUtil() {
+    private RandomUtils() {
         throw new UnsupportedOperationException("This class is not instantiable");
     }
 

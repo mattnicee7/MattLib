@@ -24,10 +24,12 @@
 
 package com.github.mattnicee7.mattlib.exception;
 
+import java.sql.SQLException;
+
 /**
  * Custom exception used when something in the attempt to connect to the database goes wrong, such as wrong credentials, etc.
  */
-public class DatabaseConnectionException extends Exception {
+public class DatabaseConnectionException extends SQLException {
 
     public DatabaseConnectionException(String message) {
         super(message);

@@ -24,10 +24,12 @@
 
 package com.github.mattnicee7.mattlib.exception;
 
+import java.sql.SQLException;
+
 /**
  * Custom exception used when some database driver is not found. Probably an error in your project
  */
-public class DatabaseDriverNotFoundException extends Exception {
+public class DatabaseDriverNotFoundException extends SQLException {
 
     public DatabaseDriverNotFoundException(String message) {
         super(message);

@@ -24,19 +24,17 @@
 
 package com.github.mattnicee7.util.chat;
 
-import lombok.experimental.UtilityClass;
 import lombok.val;
 import lombok.var;
 import org.bukkit.ChatColor;
 
 import java.util.regex.Pattern;
 
-@UtilityClass
 public class ChatUtils {
 
-    private boolean HEX_COLOR_SUPPORT;
+    private static boolean HEX_COLOR_SUPPORT;
 
-    public final Pattern HEX_COLOR_PATTERN = Pattern.compile("&#([0-9A-Fa-f]{6})");
+    public static final Pattern HEX_COLOR_PATTERN = Pattern.compile("&#([0-9A-Fa-f]{6})");
 
     static {
         try {
@@ -55,7 +53,7 @@ public class ChatUtils {
      *
      * @return The colored text.
      */
-    public String colorize(String text) {
+    public static String colorize(String text) {
         var coloredText = text;
         if (HEX_COLOR_SUPPORT) {
             val matcher = HEX_COLOR_PATTERN.matcher(coloredText);
@@ -68,7 +66,7 @@ public class ChatUtils {
         return ChatColor.translateAlternateColorCodes('&', coloredText);
     }
 
-    public boolean supportHexColor() {
+    public static boolean supportHexColor() {
         return HEX_COLOR_SUPPORT;
     }
 

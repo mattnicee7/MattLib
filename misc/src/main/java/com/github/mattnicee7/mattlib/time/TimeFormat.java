@@ -31,6 +31,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ *
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -54,6 +57,9 @@ public class TimeFormat {
         return new TimeFormat(singular, plural);
     }
 
+    /**
+     *
+     */
     public void setSingularAndPlural(Pair<String, String> singularAndPlural) {
         this.singular = singularAndPlural.getFirst();
         this.plural = singularAndPlural.getSecond();

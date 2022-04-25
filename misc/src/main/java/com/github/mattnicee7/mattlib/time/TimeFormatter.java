@@ -33,7 +33,11 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.Map.Entry;
 
+/**
+ * A class that provides a variety of methods for formatting time.
+ */
 @Getter(AccessLevel.PACKAGE)
 public class TimeFormatter {
 
@@ -64,17 +68,23 @@ public class TimeFormatter {
         applyTimeInTimeFormats();
     }
 
-    /*
-     Credits: https://github.com/ViiictorXD/ParkourBR/blob/development/src/main/java/com/rukko/parkour/backend/format/FormatTime.java.
-     Thanks so much ViictorXD.
+    /**
+     * Format the time in milliseconds to a string.
+     *
+     * Credits: <a href="https://github.com/ViiictorXD">ViiictorXD</a>, (Thanks so much, Viiictor).
+     *
+     * @param timeInMillis
+     *        The time in milliseconds.
+     *
+     * @return The formatted time.
      */
-    public String format(long millis) {
+    public String format(long timeInMillis) {
         final List<TimeFormat> values = Arrays.asList(
                 year, month, week, day, hour, minute, second
         );
         final Map<TimeFormat, Integer> timeFormatMap = new LinkedHashMap<>();
 
-        long leftTime = TimeUnit.MILLISECONDS.toSeconds(millis);
+        long leftTime = TimeUnit.MILLISECONDS.toSeconds(timeInMillis);
         for (TimeFormat value : values) {
             if (leftTime >= value.getTimeInSecond()) {
                 int durationInCurrentTime = (int) (leftTime / value.getTimeInSecond());
@@ -85,23 +95,22 @@ public class TimeFormatter {
         }
 
         final StringBuilder stringBuilder = new StringBuilder();
-        Set<Map.Entry<TimeFormat, Integer>> entries = timeFormatMap.entrySet();
+        final Set<Entry<TimeFormat, Integer>> entries = timeFormatMap.entrySet();
         int size = entries.size();
 
         int index = 1;
 
-        for (Map.Entry<TimeFormat, Integer> entry : entries) {
-            TimeFormat key = entry.getKey();
-            Integer value = entry.getValue();
+        for (Entry<TimeFormat, Integer> entry : entries) {
+            final TimeFormat key = entry.getKey();
+            final Integer value = entry.getValue();
 
             stringBuilder.append(value)
                     .append(value == 1 ? key.getSingular() : key.getPlural());
 
-            if (index == size - 1) {
+            if (index == size - 1)
                 stringBuilder.append(" & ");
-            } else if (index != size) {
+            else if (index != size)
                 stringBuilder.append(", ");
-            }
 
             index++;
         }
@@ -109,18 +118,30 @@ public class TimeFormatter {
         return stringBuilder.toString();
     }
 
+    /**
+     *
+     */
     public String format(LocalDateTime localDateTime) {
         return format(localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
+    /**
+     *
+     */
     public String format(Date date) {
         return format(date.getTime());
     }
 
+    /**
+     *
+     */
     public String format(Instant instant) {
         return format(instant.toEpochMilli());
     }
 
+    /**
+     * > It sets the time in seconds for each of the time formats
+     */
     private void applyTimeInTimeFormats() {
         this.year.setTimeInSecond(31104000L);
         this.month.setTimeInSecond(2592000L);

@@ -28,10 +28,13 @@ import com.github.mattnicee7.mattlib.singlemap.Pair;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * A class that builds a {@link TimeFormatter}.
+ * */
 @NoArgsConstructor
 public class TimeFormatterBuilder {
 
-    private TimeFormatter timeFormatter = new TimeFormatter();
+    private final TimeFormatter timeFormatter = new TimeFormatter();
 
     public static TimeFormatter getDefaultTimeFormatter() {
         return new TimeFormatter(

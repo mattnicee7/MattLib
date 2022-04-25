@@ -22,9 +22,12 @@
  *  SOFTWARE.
  */
 
-package util;
+package com.github.mattnicee7.util.player;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class PlayerUtils {
 
-
+    
 }

@@ -29,6 +29,8 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+
 /**
  * Enum responsible to storage the all options of email-hosts to use.
  * */
@@ -45,13 +47,19 @@ public enum EmailHostType {
         this.port = port;
     }
 
+    /**
+     * It takes a string and returns an enum value if the string matches the enum value's name
+     *
+     * @param emailHostTypeString
+     *        The string representation of the email host type.
+     *
+     * @return The host type if it matches, null otherwise.
+     */
     @Nullable
     public EmailHostType of(@NotNull String emailHostTypeString) {
-        for (EmailHostType emailHostType : values())
-            if (emailHostType.toString().equalsIgnoreCase(emailHostTypeString))
-                return emailHostType;
-
-        return null;
+        return Arrays.stream(values()).filter(
+                emailHostType -> emailHostType.toString().equalsIgnoreCase(emailHostTypeString)
+        ).findFirst().orElse(null);
     }
 
 }

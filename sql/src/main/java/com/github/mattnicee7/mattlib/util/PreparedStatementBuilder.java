@@ -35,7 +35,7 @@ import java.util.Map;
 
 /**
  * The PreparedStatementBuilder class is a utility class that allows you to build a prepared statement in steps
- * Credits: https://github.com/chicoferreira/screen-quests/blob/master/src/main/java/com/redescreen/quests/util/database/PreparedStatementBuilder.java
+ * Credits: <a href="https://github.com/chicoferreira">chicoferreira</a>, thanks so much chico.
  */
 public class PreparedStatementBuilder {
 
@@ -72,9 +72,8 @@ public class PreparedStatementBuilder {
     public PreparedStatement build(@NotNull Connection connection) throws SQLException {
         val preparedStatement = connection.prepareStatement(this.query);
 
-        for (Map.Entry<Integer, Object> entry : parameters.entrySet()) {
+        for (Map.Entry<Integer, Object> entry : parameters.entrySet())
             preparedStatement.setObject(entry.getKey(), entry.getValue());
-        }
 
         return preparedStatement;
     }

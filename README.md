@@ -3,13 +3,13 @@
 [![GitHub stars](https://img.shields.io/github/stars/mattnicee7/mattlib)](https://github.com/mattnicee7/MattLib/stargazers)
 [![CodeFactor](https://www.codefactor.io/repository/github/mattnicee7/mattlib/badge/master)](https://www.codefactor.io/repository/github/mattnicee7/mattlib/overview/master)
 
-Uma biblioteca completa para seus projetos, com funções que abrangem desde de banco de dados como MySQL, SQLite, PostgreSQL, MariaDB a verificação avançada de documentos como CPF/CNPJ. Além de um código limpo e robusto facilitando o uso.
+Uma biblioteca completa para seus projetos, com funções que abrangem desde de banco de dados como MySQL, SQLite, PostgreSQL, MariaDB a verificação de documentos como CPF/CNPJ. Além de um código limpo e robusto facilitando o uso. Issues e Pull-Requests são bem vindos nesse repositório.
 
 # Recursos
 
 Lista dos principais recursos disponíveis na biblioteca:
 
-✱ Projeto multi-modulo dividido entre misc e sql. Você pode escolher o módulo que você quer usar.
+✱ Projeto multi-modulo dividido entre misc, sql e spigot. Você pode escolher o módulo que você quer usar.
 
 ✱ Verificador de documentos (CPF e CNPJ).
 
@@ -21,7 +21,7 @@ Lista dos principais recursos disponíveis na biblioteca:
 
 ✱ Conector de SQL com opções de 4 database: MySQL, SQLite, PostgreSQL, MariaDB.
 
-✱ Formatador de horários e tempo.
+✱ Formatador de tempo.
 
 ✱ E muito mais...
 
@@ -71,6 +71,8 @@ dependencies {
 ✱ [Javax Mail](https://mvnrepository.com/artifact/javax.mail)
 
 ✱ [Jetbrains Annotation](https://www.jetbrains.com/help/idea/annotating-source-code.html)
+
+✱ MySQL, PostgreSQL, MariaDB, SQLite Drivers.
 
 # Contribuidores
 

@@ -28,15 +28,12 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.Map.Entry;
 
 /**
- * A class that provides a variety of methods for formatting time.
+ * It converts a number of milliseconds into a human readable format.
  */
 @Getter(AccessLevel.PACKAGE)
 public class TimeFormatter {
@@ -116,27 +113,6 @@ public class TimeFormatter {
         }
 
         return stringBuilder.toString();
-    }
-
-    /**
-     *
-     */
-    public String format(LocalDateTime localDateTime) {
-        return format(localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
-    }
-
-    /**
-     *
-     */
-    public String format(Date date) {
-        return format(date.getTime());
-    }
-
-    /**
-     *
-     */
-    public String format(Instant instant) {
-        return format(instant.toEpochMilli());
     }
 
     /**

@@ -34,18 +34,20 @@ import org.jetbrains.annotations.NotNull;
 @NoArgsConstructor
 public class TimeFormatterBuilder {
 
+    private static final TimeFormatter DEFAULT_TIME_FORMATTER = new TimeFormatter(
+            TimeFormat.of(" year", " years"),
+            TimeFormat.of(" month", " months"),
+            TimeFormat.of(" week", " weeks"),
+            TimeFormat.of(" day", " days"),
+            TimeFormat.of(" hour", " hours"),
+            TimeFormat.of(" minute", " minutes"),
+            TimeFormat.of(" second", " seconds")
+    );
+
     private final TimeFormatter timeFormatter = new TimeFormatter();
 
     public static TimeFormatter getDefaultTimeFormatter() {
-        return new TimeFormatter(
-                TimeFormat.of(" year", " years"),
-                TimeFormat.of(" month", " months"),
-                TimeFormat.of(" week", " weeks"),
-                TimeFormat.of(" day", " days"),
-                TimeFormat.of(" hour", " hours"),
-                TimeFormat.of(" minute", " minutes"),
-                TimeFormat.of(" second", " seconds")
-        );
+        return DEFAULT_TIME_FORMATTER;
     }
 
     public TimeFormatterBuilder setYearFormatter(@NotNull Pair<String, String> singularAndPlural) {

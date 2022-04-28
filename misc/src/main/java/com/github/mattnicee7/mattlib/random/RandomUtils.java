@@ -50,6 +50,7 @@ public class RandomUtils {
      */
     private static final char[] ALPHANUMERIC_SPECIAL_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*()_+=-,.;/".toCharArray();
 
+
     /**
      * Not instantiable
      */

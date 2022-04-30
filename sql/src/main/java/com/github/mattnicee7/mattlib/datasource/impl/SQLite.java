@@ -58,7 +58,7 @@ public class SQLite implements DataSource {
 
     @Override
     public void closeConnection() {
-
+        // Do nothing because SQLite doesn't need to be closed.
     }
 
 }

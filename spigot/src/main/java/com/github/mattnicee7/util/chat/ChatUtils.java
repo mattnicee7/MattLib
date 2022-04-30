@@ -36,6 +36,10 @@ public class ChatUtils {
 
     public static final Pattern HEX_COLOR_PATTERN = Pattern.compile("&#([0-9A-Fa-f]{6})");
 
+    private ChatUtils() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
     static {
         try {
             net.md_5.bungee.api.ChatColor.class.getDeclaredMethod("of", String.class);
@@ -57,10 +61,11 @@ public class ChatUtils {
         var coloredText = text;
         if (HEX_COLOR_SUPPORT) {
             val matcher = HEX_COLOR_PATTERN.matcher(coloredText);
-            StringBuffer buffer = new StringBuffer();
-            while (matcher.find()) {
+            val buffer = new StringBuffer();
+
+            while (matcher.find())
                 matcher.appendReplacement(buffer, net.md_5.bungee.api.ChatColor.of("#" + matcher.group(1)).toString());
-            }
+
             coloredText = matcher.appendTail(buffer).toString();
         }
         return ChatColor.translateAlternateColorCodes('&', coloredText);

@@ -37,6 +37,10 @@ import java.io.File;
  */
 public class QRCodeGenerator {
 
+    private QRCodeGenerator() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
     /**
      * Generate a QRCode with the text you prefer.
      * Default charset: UTF-8

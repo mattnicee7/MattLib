@@ -28,10 +28,13 @@ import com.github.mattnicee7.mattlib.date.DateUtil;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.PrintStream;
 import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 public class Logger {
+
+    private static final PrintStream out = System.out;
 
     /**
      * Log a message with the {@link LogLevel} level.
@@ -43,7 +46,7 @@ public class Logger {
      *        The message to log.
      */
     public void log(@NotNull LogLevel logLevel, @NotNull String message) {
-        System.out.println(logLevel.getName() + ": " + message);
+        out.println(logLevel.getName() + ": " + message);
     }
 
     /**
@@ -64,7 +67,7 @@ public class Logger {
             return;
         }
 
-        System.out.println(DateUtil.getNowTimeStamp() + " " + logLevel.getName() + ": " + message);
+        out.println(DateUtil.getNowTimeStamp() + " " + logLevel.getName() + ": " + message);
     }
 
     /**
@@ -88,7 +91,7 @@ public class Logger {
             return;
         }
 
-        System.out.println(DateUtil.getNowTimeStamp(dateTimeFormatter) + " " + logLevel.getName() + ": " + message);
+        out.println(DateUtil.getNowTimeStamp(dateTimeFormatter) + " " + logLevel.getName() + ": " + message);
     }
 
 }

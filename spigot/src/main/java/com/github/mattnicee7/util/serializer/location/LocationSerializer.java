@@ -35,6 +35,13 @@ public class LocationSerializer {
 
     private static final String DEFAULT_SEPARATOR = ";";
 
+    /**
+     * Not instantiable.
+     * */
+    private LocationSerializer() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
     public static String serialize(@NotNull Location location) {
         return serialize(location, DEFAULT_SEPARATOR);
     }

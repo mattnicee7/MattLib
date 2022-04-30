@@ -28,6 +28,13 @@ import java.util.function.Function;
 
 public class StringUtil {
 
+    /**
+     * Not instantiable.
+     * */
+    private StringUtil() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
     public static String format(String message, Function<String, String> format) {
         return format.apply(message);
     }

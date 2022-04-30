@@ -39,6 +39,10 @@ import java.io.FileInputStream;
  */
 public class QRCodeReader {
 
+    private QRCodeReader() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
     /**
      * Read the QRCode image.
      *

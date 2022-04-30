@@ -27,13 +27,13 @@ package com.github.mattnicee7.mattlib.credentials;
 /**
  *
  */
-public abstract class DatabaseCredentials {
+public interface DatabaseCredentials {
 
     /**
      * Generate the correct connection link to connect to the database.
      *
      * @return The correct connection link.
      */
-    public abstract String getUrl();
+    String getUrl();
 
 }

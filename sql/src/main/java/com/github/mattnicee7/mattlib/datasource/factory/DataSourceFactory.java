@@ -43,6 +43,13 @@ import org.jetbrains.annotations.NotNull;
 public class DataSourceFactory {
 
     /**
+     * Not instantiable.
+     * */
+    private DataSourceFactory() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
+    /**
      * Create a DataSource with SQLite file.
      *
      * <h2> Example Usage

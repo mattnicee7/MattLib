@@ -26,7 +26,6 @@ package com.github.mattnicee7.mattlib.email;
 
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;

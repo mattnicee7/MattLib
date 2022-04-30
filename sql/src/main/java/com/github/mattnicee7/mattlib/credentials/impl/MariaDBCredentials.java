@@ -28,7 +28,7 @@ import com.github.mattnicee7.mattlib.credentials.DatabaseCredentials;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
-public class MariaDBCredentials extends DatabaseCredentials {
+public class MariaDBCredentials implements DatabaseCredentials {
 
     private final String address;
     private final int port;

@@ -32,7 +32,7 @@ import java.io.File;
 /**
  * Class responsible for storing credentials of a SQLite database.
  */
-public class SQLiteCredentials extends DatabaseCredentials {
+public class SQLiteCredentials implements DatabaseCredentials {
 
     private final File file;
 

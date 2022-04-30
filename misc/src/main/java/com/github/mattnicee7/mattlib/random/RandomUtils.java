@@ -72,7 +72,7 @@ public class RandomUtils {
      * @return A random element from the list
      */
     public static <T> T getRandomElement(@NotNull List<T> elements) {
-        if (elements.size() < 1)
+        if (elements.isEmpty())
             throw new IllegalArgumentException("List can't be empty");
 
         return elements.get(RANDOM.nextInt(elements.size()));

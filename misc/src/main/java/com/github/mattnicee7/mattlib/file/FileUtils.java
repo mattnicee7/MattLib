@@ -39,6 +39,13 @@ public class FileUtils {
     private static final FileFilter FILE_FILTER_EMPTY = file -> true;
 
     /**
+     * Not instantiable.
+     * */
+    private FileUtils() {
+        throw new UnsupportedOperationException("This class is not instantiable");
+    }
+
+    /**
      * It returns a list of all files in a folder, including all files in all subfolders
      *
      * @param path

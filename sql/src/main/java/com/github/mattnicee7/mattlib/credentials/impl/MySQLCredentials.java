@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Class responsible for storing credentials of a MySQL database.
  */
-public class MySQLCredentials extends DatabaseCredentials {
+public class MySQLCredentials implements DatabaseCredentials {
 
     private final String address;
     private final int port;

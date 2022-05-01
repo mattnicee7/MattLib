@@ -35,8 +35,26 @@ public class StringUtil {
         throw new UnsupportedOperationException("This class is not instantiable");
     }
 
+    /**
+     *
+     * */
     public static String format(String message, Function<String, String> format) {
         return format.apply(message);
+    }
+
+    /**
+     * If the message is empty, return the default message, otherwise return the message
+     *
+     * @param message
+     *        The message to check if it's empty.
+     *
+     * @param defaultMessage
+     *        The message to return if the message is empty.
+     *
+     * @return The message if it is not empty, otherwise the defaultMessage.
+     */
+    public static String ifEmpty(String message, String defaultMessage) {
+        return message.isEmpty() ? defaultMessage : message;
     }
 
 }

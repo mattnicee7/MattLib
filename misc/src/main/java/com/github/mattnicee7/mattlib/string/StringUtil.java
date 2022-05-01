@@ -24,6 +24,8 @@
 
 package com.github.mattnicee7.mattlib.string;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Function;
 
 public class StringUtil {
@@ -38,7 +40,7 @@ public class StringUtil {
     /**
      *
      * */
-    public static String format(String message, Function<String, String> format) {
+    public static String format(@NotNull String message, @NotNull Function<String, String> format) {
         return format.apply(message);
     }
 
@@ -53,7 +55,7 @@ public class StringUtil {
      *
      * @return The message if it is not empty, otherwise the defaultMessage.
      */
-    public static String ifEmpty(String message, String defaultMessage) {
+    public static String ifEmpty(@NotNull String message, @NotNull String defaultMessage) {
         return message.isEmpty() ? defaultMessage : message;
     }
 

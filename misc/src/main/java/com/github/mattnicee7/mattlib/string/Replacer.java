@@ -36,12 +36,12 @@ public class Replacer {
 
     private final Map<String, Object> replacers = new HashMap<>();
 
-    public Replacer put(String key, Object value) {
+    public Replacer put(@NotNull String key, @NotNull Object value) {
         replacers.put(key, value);
         return this;
     }
 
-    public String replace(String message) {
+    public String replace(@NotNull String message) {
         for (Entry<String, Object> entry : replacers.entrySet()) {
             message = message.replace(entry.getKey(), entry.getValue().toString());
         }

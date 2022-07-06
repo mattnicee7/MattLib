@@ -94,4 +94,28 @@ public class Logger {
         out.println(DateUtil.getNowTimeStamp(dateTimeFormatter) + " " + logLevel.getName() + ": " + message);
     }
 
+    public void fine(@NotNull String message) {
+        fine(message, false);
+    }
+
+    public void fine(@NotNull String message, boolean timeStamp) {
+        log(LogLevel.FINE, message, timeStamp);
+    }
+
+    public void warn(@NotNull String message) {
+        warn(message, false);
+    }
+
+    public void warn(@NotNull String message, boolean timeStamp) {
+        log(LogLevel.WARNING, message, timeStamp);
+    }
+
+    public void info(@NotNull String message) {
+        info(message, false);
+    }
+
+    public void info(@NotNull String message, boolean timeStamp) {
+        log(LogLevel.INFO, message, timeStamp);
+    }
+
 }

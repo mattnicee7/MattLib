@@ -62,6 +62,7 @@ dependencies {
 * Relocate in some dependencies
 * Add more features (misc, sql)
 * Add features in spigot (utils, builders)
+* Add ConsoleReader in console package
 
 # Exemplos de usos
 

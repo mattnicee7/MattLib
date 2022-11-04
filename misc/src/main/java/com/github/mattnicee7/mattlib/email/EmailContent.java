@@ -25,7 +25,9 @@
 package com.github.mattnicee7.mattlib.email;
 
 import lombok.Getter;
+import lombok.val;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
@@ -56,7 +58,7 @@ public class EmailContent {
      *
      * @return this.
      * */
-    public EmailContent addMessage(@NotNull String message) {
+    public EmailContent concat(@NotNull String message) {
         this.message += message;
         return this;
     }
@@ -69,9 +71,10 @@ public class EmailContent {
      *
      * @return the MimeMessage.
      * */
+    @Nullable
     protected MimeMessage build(@NotNull Session session) {
         try {
-            MimeMessage mimeMessage = new MimeMessage(session);
+            val mimeMessage = new MimeMessage(session);
             mimeMessage.setSubject(subject);
             mimeMessage.setText(message);
 

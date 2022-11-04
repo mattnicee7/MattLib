@@ -57,9 +57,10 @@ public enum EmailHostType {
      */
     @Nullable
     public EmailHostType of(@NotNull String emailHostTypeString) {
-        return Arrays.stream(values()).filter(
-                emailHostType -> emailHostType.toString().equalsIgnoreCase(emailHostTypeString)
-        ).findFirst().orElse(null);
+        return Arrays.stream(values())
+                .filter(emailHostType -> emailHostType.toString().equalsIgnoreCase(emailHostTypeString))
+                .findFirst()
+                .orElse(null);
     }
 
 }

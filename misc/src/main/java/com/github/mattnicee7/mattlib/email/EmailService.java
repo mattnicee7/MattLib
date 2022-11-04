@@ -24,6 +24,7 @@
 
 package com.github.mattnicee7.mattlib.email;
 
+import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
 import javax.mail.Message;
@@ -60,7 +61,7 @@ public class EmailService {
      * */
     public void sendEmail(@NotNull EmailContent emailContent, @NotNull String receiver) {
         try {
-            MimeMessage mimeMessage = emailContent.build(emailCredentials.getSession());
+            val mimeMessage = emailContent.build(emailCredentials.getSession());
             mimeMessage.setFrom(new InternetAddress(emailCredentials.getEmail()));
             mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
             Transport.send(mimeMessage);
@@ -80,8 +81,7 @@ public class EmailService {
      *        The receivers of the email.
      * */
     public void sendEmail(@NotNull EmailContent emailContent, @NotNull List<String> receivers) {
-        for (String receiver : receivers)
-            sendEmail(emailContent, receiver);
+        receivers.forEach(receiver -> this.sendEmail(emailContent, receiver));
     }
 
     /**
@@ -95,7 +95,7 @@ public class EmailService {
      *        The receivers of the email.
      * */
     public void sendEmail(@NotNull EmailContent emailContent, String... receivers) {
-        sendEmail(emailContent, Arrays.asList(receivers));
+        this.sendEmail(emailContent, Arrays.asList(receivers));
     }
 
 }

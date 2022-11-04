@@ -26,6 +26,7 @@ package com.github.mattnicee7.mattlib.email;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
 import javax.mail.Authenticator;
@@ -50,7 +51,7 @@ public class EmailCredentials {
         this.password = password;
         this.emailHostType = emailHostType;
 
-        final Properties properties = new Properties();
+        val properties = new Properties();
         properties.put("mail.smtp.user", email);
         properties.put("mail.smtp.host", emailHostType.getSmtp());
         properties.put("mail.smtp.port", emailHostType.getPort());

@@ -10,7 +10,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.28")
 
     // PostgreSQL Driver
-    implementation("org.postgresql:postgresql:42.3.3")
+    implementation('org.postgresql:postgresql:42.5.1')
 
     // MariaDB Driver
     implementation("org.mariadb.jdbc:mariadb-java-client:3.0.3")

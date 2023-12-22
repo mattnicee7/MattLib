@@ -4,7 +4,7 @@ repositories {
 
 dependencies {
     // SQLite Driver
-    implementation("org.xerial:sqlite-jdbc:3.36.0.3")
+    implementation('org.xerial:sqlite-jdbc:3.41.2.2')
 
     // MySQL Driver
     implementation("mysql:mysql-connector-java:8.0.28")

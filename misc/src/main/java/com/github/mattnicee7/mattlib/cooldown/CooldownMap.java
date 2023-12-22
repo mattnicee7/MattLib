@@ -97,7 +97,7 @@ public class CooldownMap<T> {
      *        Object to remove from cooldown.
      *
      */
-    private void remove(@NotNull T key) {
+    public void remove(@NotNull T key) {
         inCooldown.remove(key);
     }
 
